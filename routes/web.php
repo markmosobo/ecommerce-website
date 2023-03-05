@@ -13,12 +13,12 @@ use App\Http\Controllers\PagesController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [PagesController::class, 'index'])->name('index');
 Route::get('/products', [PagesController::class, 'products'])->name('products');
 Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
+
+Route::get('category/{id}', [PagesController::class, 'category']);
 
 Auth::routes();
 

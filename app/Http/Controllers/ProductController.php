@@ -32,20 +32,47 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $productId = $request->id;
- 
-        $product   =   Product::updateOrCreate(
-                    [
-                     'id' => $productId
-                    ],
-                    [
-                    'name' => $request->name, 
-                    'price' => $request->price, 
-                    'quantity' => $request->quantity,
-                    'category_id' => $request->category_id
-                    ]);    
-                         
-        return Response()->json($product);
+        $validatedData = $request->validate([
+            'images' => 'required',
+            'images.*' => 'mimes:jpg,png,jpeg,gif,svg'
+            ]);
+
+        if($request->TotalImages > 0)
+        {
+                
+            for ($x = 0; $x < $request->TotalImages; $x++) 
+            {
+    
+                if ($request->hasFile('images'.$x)) 
+                {
+                    $file      = $request->file('images'.$x);
+    
+                    $path = $file->store('public/images');
+                    $name = $file->getClientOriginalName();
+    
+                }
+            }    
+            $productId = $request->id;
+    
+            $product   =   Product::updateOrCreate(
+                        [
+                        'id' => $productId
+                        ],
+                        [
+                        'name' => $request->name, 
+                        'price' => $request->price, 
+                        'quantity' => $request->quantity,
+                        'category_id' => $request->category_id,
+                        'image_path' => $path,
+                        'photo' => $name
+                        ]);    
+                            
+            return Response()->json($product);
+
+        }  
+        else{
+            return response()->json(["message" => "Please try again."]);
+        } 
     }
 
     /**
@@ -70,7 +97,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
         $product = Product::where('id',$request->id)->delete();
       

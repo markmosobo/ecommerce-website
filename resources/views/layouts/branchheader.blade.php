@@ -45,9 +45,29 @@
 								<div class="sinlge-bar">
 									<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 								</div>
-								<div class="sinlge-bar">
-									<a href="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-								</div>
+                                @if (Route::has('login'))
+                                @auth
+                                @if (Auth::user()->role == 'admin')
+                                <div class="sinlge-bar">
+                                    <a href="{{url('/admin_dashboard')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                                @elseif (Auth::user()->role == 'seller')
+                                <div class="sinlge-bar">
+                                    <a href="{{('/seller_dashboard')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                                @else
+                                <div class="sinlge-bar">
+                                    <a href="{{('/buyer_dashboard')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                                @endif
+
+
+                                @else
+                                <div class="sinlge-bar">
+                                    <a href="{{route('login')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                                @endauth
+                                @endif
 								<div class="sinlge-bar shopping">
 									<a href="#" class="single-icon"><i class="ti-bag"></i> <span class="total-count">2</span></a>
 									<!-- Shopping Item -->

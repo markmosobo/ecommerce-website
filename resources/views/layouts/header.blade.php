@@ -31,9 +31,9 @@
 							<div class="search-bar">
 								<select>
 									<option selected="selected">All Category</option>
-									<option>watch</option>
-									<option>mobile</option>
-									<option>kid’s item</option>
+									@foreach ($categories as $category)
+									<option>{{$category->name}}</option>										
+									@endforeach
 								</select>
 								<form>
 									<input name="search" placeholder="Search Products Here....." type="search">
@@ -170,14 +170,9 @@
 											</li>
 										</ul>
 									</li>
-									<li><a href="#">accessories</a></li>
-									<li><a href="#">top 100 offer</a></li>
-									<li><a href="#">sunglass</a></li>
-									<li><a href="#">watch</a></li>
-									<li><a href="#">man’s product</a></li>
-									<li><a href="#">ladies</a></li>
-									<li><a href="#">westrn dress</a></li>
-									<li><a href="#">denim </a></li>
+									@foreach ($topcategories as $category)
+									<li><a href="{{url('category/'.$category->id)}}">{{$category->name}}</a></li>										
+									@endforeach
 								</ul>
 							</div>
 						</div>
