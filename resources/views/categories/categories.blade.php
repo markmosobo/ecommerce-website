@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Products')
+@section('title', 'Product Categories')
 
 @section('content')
 <div class="container mt-2">
@@ -19,7 +19,7 @@
     </ol>
 </div>
 <div class="float-right mb-2">
-<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Product</a>
+<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Category</a>
 </div>
 </div>
 </div>
@@ -29,29 +29,26 @@
 </div>
 @endif
 <div class="card-body">
-<table class="table table-bordered" id="product-datatable">
+<table class="table table-bordered" id="category-datatable">
 <thead>
 <tr>
 <th>Id</th>
 <th>Name</th>
-<th>Category</th>
-<th>Price</th>
-<th>Stock</th>
 <th>Action</th>
 </tr>
 </thead>
 </table>
 </div>
 </div>
-<!-- boostrap product model -->
-<div class="modal fade" id="product-modal" aria-hidden="true">
+<!-- boostrap category model -->
+<div class="modal fade" id="category-modal" aria-hidden="true">
 <div class="modal-dialog modal-lg">
 <div class="modal-content">
 <div class="modal-header">
-<h4 class="modal-title" id="ProductModal"></h4>
+<h4 class="modal-title" id="CategoryModal"></h4>
 </div>
 <div class="modal-body">
-<form action="javascript:void(0)" id="ProductForm" name="ProductForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
+<form action="javascript:void(0)" id="CategoryForm" name="CategoryForm" class="form-horizontal" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="id" id="id">
 <div class="form-group">
 <label for="name" class="col-sm-2 control-label">Name</label>
@@ -59,29 +56,6 @@
 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" maxlength="50" required="">
 </div>
 </div>  
-<div class="form-group">
-<label for="name" class="col-sm-2 control-label">Category</label>
-<div class="col-sm-12">
-    <select name="category_id" id="category_id" class="form-control" maxlength="50" required="">
-    <option value="0">Select category</option>
-    @foreach ($categories as $category)
-    <option value="{{$category->id}}">{{$category->name}}</option>            
-    @endforeach
-    </select>
-</div>
-</div> 
-<div class="form-group">
-<label for="name" class="col-sm-2 control-label">Price</label>
-<div class="col-sm-12">
-<input type="text" class="form-control" id="price" name="price" placeholder="Enter Price" maxlength="50" required="">
-</div>
-</div> 
-<div class="form-group">
-<label for="name" class="col-sm-2 control-label">Quantity</label>
-<div class="col-sm-12">
-<input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" min="1" max="1000000" required="">
-</div>
-</div>
 <div class="col-sm-offset-2 col-sm-10">
 <button type="submit" class="btn btn-primary" id="btn-save">Save changes
 </button>
@@ -101,40 +75,35 @@ headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 }
 });
-$('#product-datatable').DataTable({
+$('#category-datatable').DataTable({
 processing: true,
 serverSide: true,
-ajax: "{{ url('product-datatable') }}",
+ajax: "{{ url('category-datatable') }}",
 columns: [
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
-{ data: 'category', name: 'category.name' },
-{ data: 'price', name: 'price' },
-{ data: 'quantity', name: 'quantity' },
 {data: 'action', name: 'action', orderable: false},
 ],
 order: [[0, 'desc']]
 });
 });
 function add(){
-$('#ProductForm').trigger("reset");
-$('#ProductModal').html("Add Product");
-$('#product-modal').modal('show');
+$('#CategoryForm').trigger("reset");
+$('#CategoryModal').html("Add Category");
+$('#category-modal').modal('show');
 $('#id').val('');
 }   
 function editFunc(id){
 $.ajax({
 type:"POST",
-url: "{{ url('edit-product') }}",
+url: "{{ url('edit-category') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-$('#ProductModal').html("Edit Product");
-$('#product-modal').modal('show');
+$('#CategoryModal').html("Edit Category");
+$('#category-modal').modal('show');
 $('#id').val(res.id);
 $('#name').val(res.name);
-$('#price').val(res.price);
-$('#quantity').val(res.quantity);
 }
 });
 }  
@@ -144,29 +113,29 @@ var id = id;
 // ajax
 $.ajax({
 type:"POST",
-url: "{{ url('delete-product') }}",
+url: "{{ url('delete-category') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-var oTable = $('#product-datatable').dataTable();
+var oTable = $('#category-datatable').dataTable();
 oTable.fnDraw(false);
 }
 });
 }
 }
-$('#ProductForm').submit(function(e) {
+$('#CategoryForm').submit(function(e) {
 e.preventDefault();
 var formData = new FormData(this);
 $.ajax({
 type:'POST',
-url: "{{ url('store-product')}}",
+url: "{{ url('store-category')}}",
 data: formData,
 cache:false,
 contentType: false,
 processData: false,
 success: (data) => {
-$("#product-modal").modal('hide');
-var oTable = $('#product-datatable').dataTable();
+$("#category-modal").modal('hide');
+var oTable = $('#category-datatable').dataTable();
 oTable.fnDraw(false);
 $("#btn-save").html('Submit');
 $("#btn-save"). attr("disabled", false);

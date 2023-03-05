@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
 use App\Models\Category;
 
-class ProductController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +13,13 @@ class ProductController extends Controller
     public function index()
     {
         if(request()->ajax()) {
-            return datatables()->of(Product::select('*'))
-            ->addColumn('action', 'products.product-action')
-            ->addColumn('category', function($row){
-                return $row->category->name;
-            })
+            return datatables()->of(Category::select('*'))
+            ->addColumn('action', 'categories.category-action')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
         }
-        $categories = Category::all();
-        return view('products.products', compact('categories'));
+        return view('categories.categories');
     }
 
     /**
@@ -32,20 +27,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $productId = $request->id;
+        $categoryId = $request->id;
  
-        $product   =   Product::updateOrCreate(
+        $category   =   Category::updateOrCreate(
                     [
-                     'id' => $productId
+                     'id' => $categoryId
                     ],
                     [
                     'name' => $request->name, 
-                    'price' => $request->price, 
-                    'quantity' => $request->quantity,
-                    'category_id' => $request->category_id
                     ]);    
                          
-        return Response()->json($product);
+        return Response()->json($category);
     }
 
     /**
@@ -62,9 +54,9 @@ class ProductController extends Controller
     public function edit(Request $request)
     {
         $where = array('id' => $request->id);
-        $product  = Product::where($where)->first();
+        $category  = Category::where($where)->first();
       
-        return Response()->json($product);
+        return Response()->json($category);
     }
 
     /**
@@ -72,8 +64,8 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        $product = Product::where('id',$request->id)->delete();
+        $category = Category::where('id',$request->id)->delete();
       
-        return Response()->json($product);
+        return Response()->json($category);
     }
 }

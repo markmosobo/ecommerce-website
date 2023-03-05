@@ -37,6 +37,11 @@ Route::post('store-product', [App\Http\Controllers\ProductController::class, 'st
 Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::post('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
 
+Route::get('category-datatable', [App\Http\Controllers\CategoryController::class, 'index']);
+Route::post('store-category', [App\Http\Controllers\CategoryController::class, 'store']);
+Route::post('edit-category', [App\Http\Controllers\CategoryController::class, 'edit']);
+Route::post('delete-category', [App\Http\Controllers\CategoryController::class, 'destroy']);
+
 Route::get('about-datatable', [App\Http\Controllers\AboutController::class, 'index']);
 Route::post('store-about', [App\Http\Controllers\AboutController::class, 'store']);
 Route::post('edit-about', [App\Http\Controllers\AboutController::class, 'edit']);
