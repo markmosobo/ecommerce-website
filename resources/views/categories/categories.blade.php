@@ -56,6 +56,26 @@
 <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name" maxlength="50" required="">
 </div>
 </div>  
+<div class="form-group">
+<label class="col-sm-2 control-label">Sex</label>
+<div class="col-sm-12">
+     <select name="sex" id="sex" class="form-control" maxlength="50">
+       <option value="selected">Select sex(optional)</option>
+        <option value="F">Female</option>
+        <option value="M">Male</option>
+        <option value="U">N/A</option>
+      </select>
+</div>
+</div>
+<div class="col-md-12">
+<div class="form-group">
+<input type="file" name="images[]" id="images" placeholder="Choose feature image" multiple >
+</div>
+<div class="col-md-12">
+<div class="mt-1 text-center">
+<div class="show-multiple-image-preview"> </div>
+</div>  
+</div>
 <div class="col-sm-offset-2 col-sm-10">
 <button type="submit" class="btn btn-primary" id="btn-save">Save changes
 </button>
@@ -74,6 +94,24 @@ $.ajaxSetup({
 headers: {
 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
 }
+});
+$(function() {
+// Multiple images preview with JavaScript
+var ShowMultipleImagePreview = function(input, imgPreviewPlaceholder) {
+if (input.files) {
+var filesAmount = input.files.length;
+for (i = 0; i < filesAmount; i++) {
+var reader = new FileReader();
+reader.onload = function(event) {
+$($.parseHTML('<img>')).attr('src', event.target.result).appendTo(imgPreviewPlaceholder);
+}
+reader.readAsDataURL(input.files[i]);
+}
+}
+};
+$('#images').on('change', function() {
+ShowMultipleImagePreview(this, 'div.show-multiple-image-preview');
+});
 });
 $('#category-datatable').DataTable({
 processing: true,
@@ -126,6 +164,12 @@ oTable.fnDraw(false);
 $('#CategoryForm').submit(function(e) {
 e.preventDefault();
 var formData = new FormData(this);
+let TotalImages = $('#images')[0].files.length; //Total Images
+let images = $('#images')[0];
+for (let i = 0; i < TotalImages; i++) {
+formData.append('images' + i, images.files[i]);
+}
+formData.append('TotalImages', TotalImages);
 $.ajax({
 type:'POST',
 url: "{{ url('store-category')}}",
@@ -139,6 +183,9 @@ var oTable = $('#category-datatable').dataTable();
 oTable.fnDraw(false);
 $("#btn-save").html('Submit');
 $("#btn-save"). attr("disabled", false);
+this.reset();
+alert('Images has been uploaded successfully');
+$('.show-multiple-image-preview').html("")
 },
 error: function(data){
 console.log(data);

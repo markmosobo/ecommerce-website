@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->integer('quantity')->nullable();
+            $table->integer('sold')->nullable();
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')
             ->references('id')
@@ -24,6 +25,7 @@ return new class extends Migration
             $table->float('price')->nullable();
             $table->string('image_path')->nullable();
             $table->string('photo')->nullable();
+            $table->longText('description')->nullable();
             $table->timestamps();
         });
     }

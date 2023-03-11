@@ -64,7 +64,8 @@ class ProductController extends Controller
                         'quantity' => $request->quantity,
                         'category_id' => $request->category_id,
                         'image_path' => $path,
-                        'photo' => $name
+                        'photo' => $name,
+                        'description' => $request->description
                         ]);    
                             
             return Response()->json($product);

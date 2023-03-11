@@ -27,17 +27,45 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $categoryId = $request->id;
- 
-        $category   =   Category::updateOrCreate(
-                    [
-                     'id' => $categoryId
-                    ],
-                    [
-                    'name' => $request->name, 
-                    ]);    
-                         
-        return Response()->json($category);
+        $validatedData = $request->validate([
+            'images' => 'required',
+            'images.*' => 'mimes:jpg,png,jpeg,gif,svg'
+            ]);
+
+            if($request->TotalImages > 0)
+            {
+                    
+                for ($x = 0; $x < $request->TotalImages; $x++) 
+                {
+        
+                    if ($request->hasFile('images'.$x)) 
+                    {
+                        $file      = $request->file('images'.$x);
+        
+                        $path = $file->store('public/images');
+                        $name = $file->getClientOriginalName();
+        
+                    }
+                } 
+
+                $categoryId = $request->id;
+        
+                $category   =   Category::updateOrCreate(
+                            [
+                            'id' => $categoryId
+                            ],
+                            [
+                            'name' => $request->name, 
+                            'image_path' => $path,
+                            'sex' =>$request->sex    
+                            ]);    
+                                
+                return Response()->json($category);
+
+            }  
+            else{
+                return response()->json(["message" => "Please try again."]);
+            }
     }
 
     /**

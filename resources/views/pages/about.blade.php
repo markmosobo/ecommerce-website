@@ -3,45 +3,67 @@
 @section('title', 'About Us')
 
 @section('content')
-
-<section class="blog-single section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-8 col-12">
-						<div class="blog-single-main">
-							<div class="row">
-								<div class="col-12">
-									<div class="blog-detail">
-										<h2 class="blog-title">@yield('title')</h2>
-										<div class="content">
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
-											<blockquote> <i class="fa fa-quote-left"></i> Do what you love to do and give it your very best. Whether it's business or baseball, or the theater, or any field. If you don't love what you're doing and you can't give it your best, get out of it. Life is too short. You'll be an old man before you know it. risus. Ut tincidunt, erat eget feugiat eleifend, eros magna dapibus diam.</blockquote>
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
-											<p>What a crazy time. I have five children in colleghigh school graduates.jpge or pursing post graduate studies  Each of my children attends college far from home, the closest of which is more than 800 miles away. While I miss being with my older children, I know that a college experience can be the source of great growth and experience can be the source of source of great growth and can provide them with even greater in future.</p>
-										</div>
-									</div>
-								</div>		
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-12">
-						<div class="main-sidebar">
-							<!-- Single Widget -->
-							<div class="single-widget category">
-								<h3 class="title">Shop Categories</h3>
-								<ul class="categor-list">
-									<li><a href="#">Men's Apparel</a></li>
-									<li><a href="#">Women's Apparel</a></li>
-									<li><a href="#">Bags Collection</a></li>
-									<li><a href="#">Accessories</a></li>
-									<li><a href="#">Sun Glasses</a></li>
-								</ul>
-							</div>
-							<!--/ End Single Widget -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+        
+        <div class="container">
+			@foreach($abouts as $about)
+        	<div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+                	<div class="text-center mb-4">
+                        <h2 class="h2">{{config('app.name')}}</h2>
+                        <div class="rte-setting">
+                            <p><strong>An e-commerce platform that allows for sellers and buyers to sell and buy items respectively.</strong></p>
+							<p>{{$about->short_description}}</p>
+	                        </div>
+                    </div>
+               	</div>
+            </div>
+            <!-- <div class="row">
+            	<div class="col-12 col-sm-4 col-md-4 col-lg-4 mb-4"><img class="blur-up lazyload" data-src="assets/images/about1.jpg" src="assets/images/about1.jpg" alt="About Us" /></div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mb-4"><img class="blur-up lazyload" data-src="assets/images/about2.jpg" src="assets/images/about2.jpg" alt="About Us" /></div>
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 mb-4"><img class="blur-up lazyload" data-src="assets/images/about3.jpg" src="assets/images/about3.jpg" alt="About Us" /></div>
+            </div> -->
+            <!-- <div class="row">
+            	<div class="col-12">
+                    <h2>Sed ut perspiciatis unde omnis iste natus error</h2>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain.</p>
+                    <p>simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasure is to be welcomed and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations of business it will frequently occur that pleasures have to be repudiated and annoyances accepted.</p>
+                    <p></p>
+                </div>
+            </div> -->
+            
+            <div class="row">
+            	<div class="col-12 col-sm-12 col-md-6 col-lg-6 mb-4">
+                	<h2 class="h2">About {{config('app.name')}} Web</h2>
+                    <div class="rte-setting"><p><strong>{{$about->quote}}</strong></p>
+                    <p>{{$about->long_description}}</p>
+                    <p></p>
+                 </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                	<h2 class="h2">Contact Us</h2>
+                    <ul class="addressFooter">
+						@foreach ($contacts as $contact)
+							@if($contact)
+							<li class="phone"><i class="icon anm anm-phone-s"></i><p>{{$contact->phone_1}}</p></li>
+							<li class="email"><i class="icon anm anm-envelope-l"></i><p>{{$contact->email_1}}</p></li>
+							<li><i class="icon anm anm-map-marker-al"></i><p>{{$contact->address}}</p></li>
+							@endif
+						@endforeach  
+					</ul>
+                    <hr />
+                    <!-- <ul class="list--inline site-footer__social-icons social-icons">
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Facebook"><i class="icon icon-facebook"></i></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Twitter"><i class="icon icon-twitter"></i> <span class="icon__fallback-text">Twitter</span></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Pinterest"><i class="icon icon-pinterest"></i> <span class="icon__fallback-text">Pinterest</span></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Instagram"><i class="icon icon-instagram"></i> <span class="icon__fallback-text">Instagram</span></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Tumblr"><i class="icon icon-tumblr-alt"></i> <span class="icon__fallback-text">Tumblr</span></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on YouTube"><i class="icon icon-youtube"></i> <span class="icon__fallback-text">YouTube</span></a></li>
+                        <li><a class="social-icons__link" href="#" target="_blank" title="Belle Multipurpose Bootstrap 4 Template on Vimeo"><i class="icon icon-vimeo-alt"></i> <span class="icon__fallback-text">Vimeo</span></a></li>
+                    </ul> -->
+                </div>
+            </div>
+            
+            @endforeach
+        </div>
 
 @endsection

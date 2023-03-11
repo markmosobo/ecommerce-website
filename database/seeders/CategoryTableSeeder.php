@@ -14,47 +14,78 @@ class CategoryTableSeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Bags - Men'
+            'name' => 'Travel Bags',
+            'sex' => 'M'
         ]);
 
         Category::create([
-            'name' => 'Bags - Women'
+            'name' => 'Hand Bags',
+            'sex' => 'F'
         ]);
 
         Category::create([
-            'name' => 'Clothes - Men'
+            'name' => 'School Bags',
+            'sex' => 'U'
         ]);
 
         Category::create([
-            'name' => 'Clothes - Women'
+            'name' => 'Shirts',
+            'sex' => 'M'
         ]);
 
         Category::create([
-            'name' => 'Shoes - Men'
+            'name' => 'Jeans',
+            'sex' => 'W'
         ]);
 
         Category::create([
-            'name' => 'Shoes - Women'
+            'name' => 'Official Shoes',
+            'sex' => 'M'
         ]);
 
         Category::create([
-            'name' => 'Phones'
+            'name' => 'Shoes',
+            'sex' => 'F'
         ]);
 
         Category::create([
-            'name' => 'Books'
+            'name' => 'Phones',
+            'sex' => 'U'
         ]);
 
         Category::create([
-            'name' => 'Sports'
+            'name' => 'Books',
+            'sex' => 'U'
         ]);
 
         Category::create([
-            'name' => 'Household Items'
+            'name' => 'Sportswear',
+            'sex' => 'U'
         ]);
 
         Category::create([
-            'name' => "Kid's Item"
+            'name' => 'Household Items',
+            'sex' => 'U'
+        ]);
+
+        Category::create([
+            'name' => "Cosmetics",
+            'sex' => 'F'
+        ]);
+
+        Category::create([
+            'name' => "Accessories",
+            'sex' => 'F'
+        ]);
+
+        Category::create([
+            'name' => "Sweaters",
+            'sex' => 'F'
+        ]);
+
+        Category::create([
+            'name' => "Hoodies",
+            'sex' => 'U'
         ]);
     }
 }

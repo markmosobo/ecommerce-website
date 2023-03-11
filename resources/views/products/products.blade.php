@@ -65,7 +65,13 @@
     <select name="category_id" id="category_id" class="form-control" maxlength="50" required="">
     <option value="0">Select category</option>
     @foreach ($categories as $category)
-    <option value="{{$category->id}}">{{$category->name}}</option>            
+    @if ($category->sex == 'M')
+    <option value="{{$category->id}}">{{$category->name}} (Men)</option>            
+    @elseif ($category->sex == 'F')  
+    <option value="{{$category->id}}">{{$category->name}} (Women)</option>            
+    @else
+    <option value="{{$category->id}}">{{$category->name}}</option>                
+    @endif
     @endforeach
     </select>
 </div>
@@ -82,6 +88,12 @@
 <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" min="1" max="1000000" required="">
 </div>
 </div>
+<div class="form-group">
+<label for="name" class="col-sm-2 control-label">Description</label>
+<div class="col-sm-12">
+<input type="text" class="form-control" id="description" name="description" placeholder="Enter description" maxlength="2250" required="">
+</div>
+</div> 
 <div class="col-md-12">
 <div class="form-group">
 <input type="file" name="images[]" id="images" placeholder="Choose images" multiple >

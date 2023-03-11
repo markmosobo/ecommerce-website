@@ -17,11 +17,12 @@ class Product extends Model
         'price',
         'image_path',
         'photo',
-        'category_id'
+        'category_id',
+        'description'
     ];
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'category_id');
     }
 }
