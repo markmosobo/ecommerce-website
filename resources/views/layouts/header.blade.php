@@ -10,10 +10,30 @@
                 <div class="col-2 col-sm-4 col-md-3 col-lg-4 text-right">
                 	<span class="user-menu d-block d-lg-none"><i class="anm anm-user-al" aria-hidden="true"></i></span>
                     <ul class="customer-links list-inline">
+					@guest
+						@if (Route::has('login'))
                         <li><a href="{{route('login')}}">Login</a></li>
+						@endif
+						@if (Route::has('register'))
                         <li><a href="{{route('register')}}">Create Account</a></li>
                         <li><a href="{{url('register-seller')}}">Become a Seller?</a></li>
-                        <li><a href="{{url('wishlist')}}">Wishlist</a></li>
+						@endif
+						@else
+						@if(Auth::user()->role == 'admin')
+						<a href="{{url('admin_dashboard')}}" title="Dashboard">
+                        	<i class="anm anm anm-user-al"></i>
+                        </a>
+						@elseif (Auth::user()->role == 'seller')
+						<a href="{{url('seller_dashboard')}}" title="Account">
+                        	<i class="anm anm anm-user-al"></i>
+                        </a>
+						@else
+						<a href="{{url('buyer_dashboard')}}" title="Account">
+                        	<i class="anm anm anm-user-al"></i>
+                        </a>
+						@endif
+						<li><a href="{{url('wishlist')}}">Wishlist</a></li>
+					@endguest
                     </ul>
                 </div>
             </div>

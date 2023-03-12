@@ -7,6 +7,7 @@
 
     <!--MainContent-->
     <div id="MainContent" class="main-content" role="main">
+
         <!--Breadcrumb-->
         <div class="bredcrumbWrap">
             <div class="container breadcrumbs">
@@ -75,8 +76,8 @@
                             <div class="product-single__description rte">
                                 <p>{{$singleproduct->description}}</p>
                             </div>
-                            <div id="quantity_message">Hurry! Only  <span class="items">4</span>  left in stock.</div>
-                            <form method="post" action="http://annimexweb.com/cart/add" id="product_form_10508262282" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
+                            <div id="quantity_message">Hurry! Only  <span class="items">{{$singleproduct->quantity}}</span>  left in stock.</div>
+                            <form method="post" action="#" id="product_form_10508262282" accept-charset="UTF-8" class="product-form product-form-product-template hidedropdown" enctype="multipart/form-data">
                                 <!-- Product Action -->
                                 <div class="product-action clearfix">
                                     <div class="product-form__item--quantity">

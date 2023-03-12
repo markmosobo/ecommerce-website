@@ -2,9 +2,9 @@
 
 @section('title', 'Home')
 
-@section('content')
+@section('content')                 
 
-    	<!--Home slider-->
+        <!--Home slider-->
     	<div class="slideshow slideshow-wrapper pb-section sliderFull">
         	<div class="home-slideshow">
             	<div class="slide">
@@ -38,6 +38,14 @@
             </div>
         </div>
         <!--End Home slider-->
+        
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success text-uppercase" role="alert">
+                <i class="icon anm anm-bag-l"></i> &nbsp;<strong>Success!</strong> {{ $message }}
+            </div>
+        @endif
+        </div>  
 
         <!--Collection Tab slider-->
         <div class="tab-slider-product section">
@@ -81,7 +89,7 @@
                                         		<!-- countdown end -->
         
                                                 <!-- Start product button -->
-                                                <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                                <form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$womenarrival->id)}}'"method="post">
                                                     <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                                                 </form>
                                                 <div class="button-set">
@@ -275,7 +283,7 @@
                                                 <!-- End product name -->
                                                 <!-- product price -->
                                                 <div class="product-price">
-                                                    <span class="price">{{$arrival->price}}</span>
+                                                    <span class="price">KSH{{$arrival->price}}</span>
                                                 </div>
                                                 <!-- End product price -->
                                                 
