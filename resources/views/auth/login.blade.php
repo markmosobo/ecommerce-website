@@ -2,6 +2,12 @@
 
 @section('content')
 <div class="container">
+    @if (Session::has('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h4 class="alert-heading">Success!</h4>
+            <p>{{ Session::get('success') }}</p>
+        </div>
+    @endif
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

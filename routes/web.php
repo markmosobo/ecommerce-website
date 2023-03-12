@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\RegisterSellerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,6 +25,8 @@ Route::get('add-to-cart/{id}', [PagesController::class, 'addToCart']);
 Route::patch('update-cart', [PagesController::class, 'update']);
 Route::delete('remove-from-cart', [PagesController::class, 'remove']);
 Route::get('category/{id}', [PagesController::class, 'category']);
+Route::post('create-seller',[RegisterSellerController::class,'createSeller'])->name('create-seller');
+Route::get('register-seller',[PagesController::class,'registerSeller']);
 
 Auth::routes();
 

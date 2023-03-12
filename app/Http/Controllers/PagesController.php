@@ -239,4 +239,9 @@ class PagesController extends Controller
         $categories = Category::all();
         return view('pages.categoryproducts', compact('products', 'categories'));
     }
+
+    public function registerSeller()
+    {
+        return view('pages.register');
+    }
 }
