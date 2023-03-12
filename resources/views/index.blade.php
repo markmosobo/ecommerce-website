@@ -166,7 +166,7 @@
 													<!-- countdown end -->
 			
 													<!-- Start product button -->
-													<form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+													<form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$menarrival->id)}}'"method="post">
 														<button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
 													</form>
 													<div class="button-set">
@@ -244,7 +244,7 @@
                                                 <!-- end product image -->
         
                                                 <!-- Start product button -->
-                                                <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                                <form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$arrival->id)}}'"method="post">
                                                     <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
                                                 </form>
                                                 <div class="button-set">

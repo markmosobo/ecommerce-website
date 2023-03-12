@@ -19,7 +19,10 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 Route::get('single_product/{id}', [PagesController::class, 'singleProduct']);
-
+Route::get('cart', [PagesController::class, 'cart']);
+Route::get('add-to-cart/{id}', [PagesController::class, 'addToCart']);
+Route::patch('update-cart', [PagesController::class, 'update']);
+Route::delete('remove-from-cart', [PagesController::class, 'remove']);
 Route::get('category/{id}', [PagesController::class, 'category']);
 
 Auth::routes();
