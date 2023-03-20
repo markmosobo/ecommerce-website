@@ -32,8 +32,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 Here’s what your completed application will look like:
+
+Homepage
 ![Screenshot_select-area_20230320131254](https://user-images.githubusercontent.com/34887895/226310726-37c71e13-5a6e-4d56-90bd-a1102f00d299.png)
+Dashboard
 ![Screenshot_select-area_20230320131413](https://user-images.githubusercontent.com/34887895/226310832-ea46e7ce-3de5-4d8e-a500-2a602d9ae8fc.png)
+Products
 ![Screenshot_select-area_20230320131522](https://user-images.githubusercontent.com/34887895/226310852-3785b4ea-7cf2-4cca-bd54-10ca18cf4f30.png)
 
 
