@@ -23,10 +23,11 @@ Route::get('single_product/{id}', [PagesController::class, 'singleProduct']);
 Route::get('cart', [PagesController::class, 'cart']);
 Route::get('add-to-cart/{id}', [PagesController::class, 'addToCart']);
 Route::patch('update-cart', [PagesController::class, 'update']);
-Route::delete('remove-from-cart', [PagesController::class, 'remove']);
+Route::delete('remove-from-cart/{id}', [PagesController::class, 'removeFromCart'])->name('remove.cart');
 Route::get('category/{id}', [PagesController::class, 'category']);
 Route::post('create-seller',[RegisterSellerController::class,'createSeller'])->name('create-seller');
 Route::get('register-seller',[PagesController::class,'registerSeller']);
+Route::get('checkout',[PagesController::class,'checkout']);
 
 Auth::routes();
 
@@ -44,6 +45,7 @@ Route::get('product-datatable', [App\Http\Controllers\ProductController::class, 
 Route::post('store-product', [App\Http\Controllers\ProductController::class, 'store']);
 Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::post('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
+Route::get('sellerproduct-datatable', [App\Http\Controllers\ProductController::class, 'sellerIndex']);
 
 Route::get('category-datatable', [App\Http\Controllers\CategoryController::class, 'index']);
 Route::post('store-category', [App\Http\Controllers\CategoryController::class, 'store']);
@@ -59,3 +61,5 @@ Route::get('contact-datatable', [App\Http\Controllers\ContactController::class, 
 Route::post('store-contact', [App\Http\Controllers\ContactController::class, 'store']);
 Route::post('edit-contact', [App\Http\Controllers\ContactController::class, 'edit']);
 Route::post('delete-contact', [App\Http\Controllers\ContactController::class, 'destroy']);
+
+Route::get('profile',[App\Http\Controllers\ProfileController::class,'getProfile']);

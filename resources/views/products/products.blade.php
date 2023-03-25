@@ -1,6 +1,10 @@
 @extends('layouts.master')
 
+@if(Auth::user()->role == 'admin')
 @section('title', 'Products')
+@elseif (Auth::user()->role == 'seller')
+@section('title', 'My Products')
+@endif
 
 @section('content')
 <div class="container mt-2">
@@ -19,7 +23,9 @@
     </ol>
 </div>
 <div class="float-right mb-2">
-<a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Product</a>
+  @if (Auth::user()->role == 'seller')
+  <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Product</a>    
+  @endif
 </div>
 </div>
 </div>
@@ -37,7 +43,12 @@
 <th>Category</th>
 <th>Price</th>
 <th>Stock</th>
-<th>Action</th>
+@can('isAdmin')
+<th>Seller</th>  
+@endcan
+@can('isSeller')
+<th>Action</th>  
+@endcan
 </tr>
 </thead>
 </table>
@@ -151,7 +162,12 @@ columns: [
 { data: 'category', name: 'category.name' },
 { data: 'price', name: 'price' },
 { data: 'quantity', name: 'quantity' },
-{data: 'action', name: 'action', orderable: false},
+@can('isAdmin')
+{ data: 'seller', name: 'seller.name' },  
+@endcan
+@can('isSeller')
+{data: 'action', name: 'action', orderable: false},  
+@endcan
 ],
 order: [[0, 'desc']]
 });

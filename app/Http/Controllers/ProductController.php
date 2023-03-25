@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\UserLog;
 
 class ProductController extends Controller
 {
@@ -18,6 +20,11 @@ class ProductController extends Controller
             ->addColumn('action', 'products.product-action')
             ->addColumn('category', function($row){
                 return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
             })
             ->rawColumns(['action'])
             ->addIndexColumn()
@@ -65,8 +72,20 @@ class ProductController extends Controller
                         'category_id' => $request->category_id,
                         'image_path' => $path,
                         'photo' => $name,
-                        'description' => $request->description
-                        ]);    
+                        'description' => $request->description,
+                        'seller_id' => Auth::user()->id
+                        ]); 
+                        
+            $user = Auth::user();
+            $time = now();
+            if($user->role == 'seller')
+            {
+                UserLog::create([
+                    'user_id' => $user->id,
+                    'title' => 'Product Upload',
+                    'activity' => "You uploaded product ID:$product->id - $product->name  on $time"
+                ]);
+            }
                             
             return Response()->json($product);
 
@@ -91,6 +110,17 @@ class ProductController extends Controller
     {
         $where = array('id' => $request->id);
         $product  = Product::where($where)->first();
+
+        $user = Auth::user();
+        $time = now();
+        if($user->role == 'seller')
+        {
+            UserLog::create([
+                'user_id' => $user->id,
+                'title' => 'Product Update',
+                'activity' => "You edited product ID:$product->id - $product->name  on $time"
+            ]);
+        }
       
         return Response()->json($product);
     }
@@ -101,7 +131,35 @@ class ProductController extends Controller
     public function destroy(Request $request)
     {
         $product = Product::where('id',$request->id)->delete();
+
+        $user = Auth::user();
+        $time = now();
+        if($user->role == 'seller')
+        {
+            UserLog::create([
+                'user_id' => $user->id,
+                'title' => 'Product Delete',
+                'activity' => "You delete product ID:$product->id - $product->name  on $time"
+            ]);
+        }
       
         return Response()->json($product);
+    }
+
+    public function sellerIndex()
+    {
+        $user = Auth::user();
+        if(request()->ajax()) {
+            return datatables()->of(Product::select('*')->where('seller_id',$user->id)->get())
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.products', compact('categories'));
     }
 }

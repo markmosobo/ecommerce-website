@@ -11,6 +11,22 @@
 <link rel="shortcut icon" href="assets/images/favicon.png" />
 <!-- Plugins CSS -->
 <link rel="stylesheet" href="assets/css/plugins.css">
+<!-- Import bootstrap cdn -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+    crossorigin="anonymous">
+
+<!-- Import jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous">
+</script>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous">
+</script>
+
 <!-- Bootstap CSS -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <!-- Main Style CSS -->
@@ -46,6 +62,7 @@
     <!--Footer-->
 		@include('layouts.footer')
     <!--End Footer-->
+
     <!--Scoll Top-->
     <span id="site-scroll"><i class="icon anm anm-angle-up-r"></i></span>
     <!--End Scoll Top-->
@@ -55,6 +72,7 @@
     	<div class="modal-dialog">
         	<div class="modal-content">
             	<div class="modal-body">
+                <input type="hidden" name="p_name" id="p_name" value="" />
                     <div id="ProductSection-product-template" class="product-template__container prstyle1">
                 <div class="product-single">
                 <!-- Start model close -->
@@ -70,7 +88,7 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="product-single__meta">
-                                <h2 class="product-single__title">Product Quick View Popup</h2>
+                                <h2 id="name" name="name" class="product-single__title"></h2>
                                 <div class="prInfoRow">
                                     <div class="product-stock"> <span class="instock ">In Stock</span> <span class="outstock hide">Unavailable</span> </div>
                                     <div class="product-sku">SKU: <span class="variant-sku">19115-rdxs</span></div>

@@ -22,6 +22,12 @@ return new class extends Migration
             ->on('categories')
             ->onUpdate('cascade')
             ->onDelete('no action');
+            $table->integer('seller_id')->unsigned();
+            $table->foreign('seller_id')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('no action');
             $table->float('price')->nullable();
             $table->string('image_path')->nullable();
             $table->string('photo')->nullable();

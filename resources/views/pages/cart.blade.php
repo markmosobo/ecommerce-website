@@ -1,15 +1,15 @@
 @extends('layouts.branch')
 
-@section('title', 'Shopping Cart')
+@section('title', 'Your Cart')
 
 @section('content')
 
 <div class="container">
         	<div class="row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 main-col">
-                	<div class="alert alert-success text-uppercase" role="alert">
+                	<!-- <div class="alert alert-success text-uppercase" role="alert">
 						<i class="icon anm anm-truck-l icon-large"></i> &nbsp;<strong>Congratulations!</strong> You've got free shipping!
-					</div>
+					</div> -->
                 	<form action="#" method="post" class="cart style2">
                 		<table>
                             <thead class="cart__row cart__header">
@@ -45,7 +45,7 @@
                                             <div class="cart__qty text-center">
                                                 <div class="qtyField">
                                                     <a class="qtyBtn minus" href="javascript:void(0);"><i class="icon icon-minus"></i></a>
-                                                    <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="1" pattern="[0-9]*">
+                                                    <input class="cart__qty-input qty" type="text" name="updates[]" id="qty" value="{{$details['quantity']}}" pattern="[0-9]*">
                                                     <a class="qtyBtn plus" href="javascript:void(0);"><i class="icon icon-plus"></i></a>
                                                 </div>
                                             </div>
@@ -53,7 +53,9 @@
                                         <td class="text-right small--hide cart-price">
                                             <div><span class="money">KSH{{ $details['price'] * $details['quantity'] }}</span></div>
                                         </td>
-                                        <td class="text-center small--hide"><a href="#" class="btn btn--secondary cart__remove" title="Remove tem"><i class="icon icon anm anm-times-l"></i></a></td>
+                                        <td class="text-center small--hide">
+                                            <a href="#" class="btn btn--secondary cart__remove" title="Remove product"><i class="icon icon anm anm-times-l"></i></a>
+                                        </td>
                                     </tr>
                                  @endforeach
                                 @endif

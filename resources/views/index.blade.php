@@ -174,7 +174,7 @@
 													<!-- countdown end -->
 			
 													<!-- Start product button -->
-													<form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$menarrival->id)}}'"method="post">
+													<form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$menarrival->id)}}' "method="post">
 														<button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
 													</form>
 													<div class="button-set">
@@ -345,7 +345,7 @@
                         <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
                         	<div class="grid-view_image">
                                 <!-- start product image -->
-                                <a href="product-accordion.html" class="grid-view-item__link">
+                                <a href="{{url('singleproduct/'.$product->id)}}" class="grid-view-item__link">
                                     <!-- image -->
                                     <img class="grid-view-item__image primary blur-up lazyload" data-src="{{Storage::url($product->image_path)}}" src="{{Storage::url($product->image_path)}}" alt="image" title="product">
                                     <!-- End image -->
@@ -361,23 +361,23 @@
                                 <div class="product-details hoverDetails text-center mobile">
                                     <!-- product name -->
                                     <div class="product-name">
-                                        <a href="product-accordion.html">{{$product->name}}</a>
+                                        <a href="{{url('singleproduct/'.$product->id)}}" id="name" name="name">{{$product->name}}</a>
                                     </div>
                                     <!-- End product name -->
                                     <!-- product price -->
                                     <div class="product-price">
                                         <!-- <span class="old-price">$500.00</span> -->
-                                        <span class="price">KSH{{$product->price}}</span>
+                                        <span class="price" id="price" name="price">KSH{{$product->price}}</span>
                                     </div>
                                     <!-- End product price -->
                                     
                                     <!-- product button -->
                                     <div class="button-set">
-                                        <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                                        <a href="javascript:void(0)" title="Quick View" id="popup" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                             <i class="icon anm anm-search-plus-r"></i>
                                         </a>
                                         <!-- Start product button -->
-                                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                        <form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$product->id)}}' "method="post">
                                             <button class="btn cartIcon btn-addto-cart" type="button" tabindex="0"><i class="icon anm anm-bag-l"></i></button>
                                         </form>
                                         <div class="wishlist-btn">
@@ -446,5 +446,12 @@
             </div>
         </div>
         <!--End Store Feature-->
+
+    <script type="text/javascript">
+    $("#popup").click(function () {
+       var name = $("name").val();
+       console.log(name);
+    });
+    </script>
 
 @endsection

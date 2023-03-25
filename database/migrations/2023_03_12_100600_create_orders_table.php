@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('order_number')->unique();
-            $table->unsignedInteger('user_id');
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
 
             $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');

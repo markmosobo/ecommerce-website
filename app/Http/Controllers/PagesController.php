@@ -219,6 +219,33 @@ class PagesController extends Controller
         }
     }
 
+    public function removeFromCart($id)
+    {
+        $product = Product::find($id);
+         if(!$product){
+            abort(404);
+         }
+
+        $cart = session()->get('cart');
+
+        if(!$cart){
+            $cart = [
+                $id = [
+                    'name' => $product->name,
+                    'quantity' => 1,
+                    'price' => $product->price,
+                    'image_path' => $product->image_path
+                ]
+                ];
+                session()->delete('cart',$cart);
+
+                return redirect()->back()->with('success', 'Product removed from cart successfully!');
+        }
+
+        session()->delete('cart', $cart);
+        return redirect()->back()->with('success', 'Product removed from cart successfully!');
+    }
+
 
     public function remove(Request $request)
     {
@@ -243,5 +270,29 @@ class PagesController extends Controller
     public function registerSeller()
     {
         return view('pages.register');
+    }
+
+    public function checkout()
+    {
+        $categories = Category::orderByDesc('created_at')->get();
+        //featured based on sales
+        $featuredproducts = Product::inRandomOrder()->limit(8)->get();
+        $bestsellingproducts = Product::inRandomOrder()->limit(10)->get();
+        $featureimage = Product::inRandomOrder()->limit(1)->get();
+        $topcategories = Category::inRandomOrder()->take(8)->get();
+        $womencategories = Category::where('sex', 'F')->take(8)->get();
+        $mencategories = Category::where('sex', 'M')->take(8)->get();
+        $salecategories = Category::where('sex', 'U')->take(8)->get();
+        $mennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
+        $womennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
+        $newarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
+        $menproducts = Product::all();
+        $womenproducts = Product::all();
+        $trendingproducts = Product::all();
+        $contacts = Contact::all();
+        return view('pages.checkout', compact('categories', 'featuredproducts','bestsellingproducts','featureimage',
+        'topcategories','womencategories','mencategories','salecategories',
+        'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
+        'newarrivals','contacts'));  
     }
 }
