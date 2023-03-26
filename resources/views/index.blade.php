@@ -85,7 +85,7 @@
                                                 <!-- end product image -->
                                                 
                                                 <!-- countdown start -->
-                                        		<div class="saleTime desktop" data-countdown="2022/03/01"></div>
+                                        		<!-- <div class="saleTime desktop" data-countdown="2022/03/01"></div> -->
                                         		<!-- countdown end -->
         
                                                 <!-- Start product button -->
@@ -96,16 +96,7 @@
                                                     <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                                         <i class="icon anm anm-search-plus-r"></i>
                                                     </a>
-                                                    <div class="wishlist-btn">
-                                                        <a class="wishlist add-to-wishlist" href="wishlist.html">
-                                                            <i class="icon anm anm-heart-l"></i>
-                                                        </a>
-                                                    </div>
-                                                    <div class="compare-btn">
-                                                        <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                            <i class="icon anm anm-random-r"></i>
-                                                        </a>
-                                                    </div>
+
                                                 </div>
                                                 <!-- end product button -->
                                             </div>
@@ -123,24 +114,7 @@
                                                     <span class="price">KSH{{$womenarrival->price}}</span>
                                                 </div>
                                                 <!-- End product price -->
-                                                
-                                                <div class="product-review">
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star"></i>
-                                                    <i class="font-13 fa fa-star-o"></i>
-                                                    <i class="font-13 fa fa-star-o"></i>
-                                                </div>
-                                                <!-- Variant -->
-                                                <!-- <ul class="swatches">
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant1.jpg" alt="image" /></li>
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant2.jpg" alt="image" /></li>
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant3.jpg" alt="image" /></li>
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant4.jpg" alt="image" /></li>
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant5.jpg" alt="image" /></li>
-                                                    <li class="swatch medium rounded"><img src="assets/images/product-images/variant6.jpg" alt="image" /></li>
-                                                </ul> -->
-                                                <!-- End Variant -->
+     
                                             </div>
                                             <!-- End product details -->
                                         </div>
@@ -380,16 +354,7 @@
                                         <form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$product->id)}}' "method="post">
                                             <button class="btn cartIcon btn-addto-cart" type="button" tabindex="0"><i class="icon anm anm-bag-l"></i></button>
                                         </form>
-                                        <div class="wishlist-btn">
-                                            <a class="wishlist add-to-wishlist" href="wishlist.html">
-                                                <i class="icon anm anm-heart-l"></i>
-                                            </a>
-                                        </div>
-                                        <div class="compare-btn">
-                                            <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
-                                                <i class="icon anm anm-random-r"></i>
-                                            </a>
-                                        </div>
+
                                     </div>
                                     <!-- end product button -->
                                 </div>

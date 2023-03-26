@@ -1,10 +1,6 @@
 @extends('layouts.master')
 
-@if(Auth::user()->role == 'admin')
-@section('title', 'Products')
-@elseif (Auth::user()->role == 'seller')
-@section('title', 'My Products')
-@endif
+@section('title', 'My Products')  
 
 @section('content')
 <div class="container mt-2">
@@ -12,20 +8,20 @@
 <div class="col-lg-12 margin-tb">
 <div class="float-left">
     <ol class="breadcrumb float-sm-right">
-      @if (Auth::user()->role == 'admin')
-      <li class="breadcrumb-item"><a href="{{url('admin_dashboard')}}">Home</a></li>
-      @elseif (Auth::user()->role == 'seller')
-      <li class="breadcrumb-item"><a href="{{url('seller_dashboard')}}">Home</a></li> 
-      @else
-      <li class="breadcrumb-item"><a href="{{url('buyer_dashboard')}}">Home</a></li> 
-      @endif
+      @can('isAdmin')
+      <li class="breadcrumb-item"><a href="{{url('admin_dashboard')}}">Home</a></li>        
+      @endcan
+      @can('isSeller')
+      <li class="breadcrumb-item"><a href="{{url('seller_dashboard')}}">Home</a></li>         
+      @endcan
+      @can('isBuyer')
+      <li class="breadcrumb-item"><a href="{{url('buyer_dashboard')}}">Home</a></li>         
+      @endcan
       <li class="breadcrumb-item active">@yield('title')</li>
     </ol>
 </div>
 <div class="float-right mb-2">
-  @if (Auth::user()->role == 'seller')
   <a class="btn btn-success" onClick="add()" href="javascript:void(0)"> Create Product</a>    
-  @endif
 </div>
 </div>
 </div>
@@ -35,7 +31,7 @@
 </div>
 @endif
 <div class="card-body">
-<table class="table table-bordered" id="product-datatable">
+<table class="table table-bordered" id="sellerproduct-datatable">
 <thead>
 <tr>
 <th>Id</th>
@@ -43,12 +39,7 @@
 <th>Category</th>
 <th>Price</th>
 <th>Stock</th>
-@can('isAdmin')
-<th>Seller</th>  
-@endcan
-@can('isSeller')
 <th>Action</th>  
-@endcan
 </tr>
 </thead>
 </table>
@@ -151,23 +142,17 @@ $('#images').on('change', function() {
 ShowMultipleImagePreview(this, 'div.show-multiple-image-preview');
 });
 });
-
-$('#product-datatable').DataTable({
+$('#sellerproduct-datatable').DataTable({
 processing: true,
 serverSide: true,
-ajax: "{{ url('product-datatable') }}",
+ajax: "{{ url('sellerproduct-datatable') }}",
 columns: [
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
 { data: 'category', name: 'category.name' },
 { data: 'price', name: 'price' },
 { data: 'quantity', name: 'quantity' },
-@can('isAdmin')
-{ data: 'seller', name: 'seller.name' },  
-@endcan
-@can('isSeller')
 {data: 'action', name: 'action', orderable: false},  
-@endcan
 ],
 order: [[0, 'desc']]
 });
@@ -204,7 +189,7 @@ url: "{{ url('delete-product') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-var oTable = $('#product-datatable').dataTable();
+var oTable = $('#sellerproduct-datatable').dataTable();
 oTable.fnDraw(false);
 }
 });
@@ -228,7 +213,7 @@ contentType: false,
 processData: false,
 success: (data) => {
 $("#product-modal").modal('hide');
-var oTable = $('#product-datatable').dataTable();
+var oTable = $('#sellerproduct-datatable').dataTable();
 oTable.fnDraw(false);
 $("#btn-save").html('Submit');
 $("#btn-save"). attr("disabled", false);

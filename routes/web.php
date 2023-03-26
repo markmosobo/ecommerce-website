@@ -45,7 +45,8 @@ Route::get('product-datatable', [App\Http\Controllers\ProductController::class, 
 Route::post('store-product', [App\Http\Controllers\ProductController::class, 'store']);
 Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::post('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
-Route::get('sellerproduct-datatable', [App\Http\Controllers\ProductController::class, 'sellerIndex']);
+
+Route::get('sellerproduct-datatable', [App\Http\Controllers\SellerProductController::class, 'index']);
 
 Route::get('category-datatable', [App\Http\Controllers\CategoryController::class, 'index']);
 Route::post('store-category', [App\Http\Controllers\CategoryController::class, 'store']);

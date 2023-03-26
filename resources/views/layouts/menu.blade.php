@@ -2,13 +2,15 @@
     <div class="menu_section">
     <h3>General</h3>
     <ul class="nav side-menu">
-        @if (Auth::user()->role == 'admin')            
+        @can('isAdmin')
         <li><a href="{{url('admin_dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-        @elseif (Auth::user()->role == 'seller')
+        @endcan
+        @can('isSeller')
         <li><a href="{{url('seller_dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-        @else
+        @endcan
+        @can('isBuyer')
         <li><a href="{{url('buyer_dashboard')}}"><i class="fa fa-tachometer"></i> Dashboard</a></li>
-        @endif
+        @endcan
         <li><a><i class="fa fa-list"></i> Products <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
             @can('isAdmin')
@@ -18,12 +20,21 @@
             @can('isSeller')
             <li><a href="{{url('sellerproduct-datatable')}}">My Products</a></li>                
             @endcan
+            @can('isBuyer')
+            <li><a href="{{url('wishproduct-datatable')}}">My Wishlist</a></li>                
+            @endcan
         </ul>
         </li>
         <li><a><i class="fa fa-tags"></i> Orders <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
+            @can('isAdmin')
             <li><a href="{{url('unprocessedorder-datatable')}}">Unprocessed Orders</a></li>
-            <li><a href="{{url('processedorder-datatable')}}">Processed Orders</a></li>
+            <li><a href="{{url('processedorder-datatable')}}">Processed Orders</a></li>                
+            @endcan
+            @can('isBuyer')
+            <li><a href="{{url('pendingorder-datatable')}}">Pending Orders</a></li>
+            <li><a href="{{url('pastorder-datatable')}}">Past Orders</a></li>                
+            @endcan
         </ul>
         </li>
         @can('isAdmin')

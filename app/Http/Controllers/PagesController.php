@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\About;
 use App\Models\Contact;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
@@ -124,8 +125,9 @@ class PagesController extends Controller
         $menproducts = Product::all();
         $womenproducts = Product::all();
         $trendingproducts = Product::all();
-        $relatedproducts = Product::all();
+        $relatedproducts = Product::all()->where('category_id', $singleproduct->category_id)->except($singleproduct->id);
         $contacts = Contact::all();
+        $products = Product::all();
         return view('pages.singleproduct', [
             'featuredproducts' => $featuredproducts,
             'bestsellingproducts' => $bestsellingproducts,
@@ -141,7 +143,8 @@ class PagesController extends Controller
             'womennewarrivals' => $womennewarrivals,
             'newarrivals' => $newarrivals,
             'singleproduct' => $singleproduct,
-            'relatedproducts' => $relatedproducts
+            'relatedproducts' => $relatedproducts,
+            'products' => $products
         ]);
     }
 

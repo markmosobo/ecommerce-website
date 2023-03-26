@@ -31,7 +31,7 @@ class ProductController extends Controller
             ->make(true);
         }
         $categories = Category::all();
-        return view('products.products', compact('categories'));
+        return view('products.product', compact('categories'));
     }
 
     /**
@@ -146,20 +146,5 @@ class ProductController extends Controller
         return Response()->json($product);
     }
 
-    public function sellerIndex()
-    {
-        $user = Auth::user();
-        if(request()->ajax()) {
-            return datatables()->of(Product::select('*')->where('seller_id',$user->id)->get())
-            ->addColumn('action', 'products.product-action')
-            ->addColumn('category', function($row){
-                return $row->category->name;
-            })
-            ->rawColumns(['action'])
-            ->addIndexColumn()
-            ->make(true);
-        }
-        $categories = Category::all();
-        return view('products.products', compact('categories'));
-    }
+
 }
