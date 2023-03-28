@@ -20,14 +20,16 @@ Route::get('/contact', [PagesController::class, 'contact'])->name('contact');
 Route::get('/about', [PagesController::class, 'about'])->name('about');
 Route::get('/faq', [PagesController::class, 'faq'])->name('faq');
 Route::get('single_product/{id}', [PagesController::class, 'singleProduct']);
-Route::get('cart', [PagesController::class, 'cart']);
-Route::get('add-to-cart/{id}', [PagesController::class, 'addToCart']);
-Route::patch('update-cart', [PagesController::class, 'update']);
-Route::delete('remove-from-cart/{id}', [PagesController::class, 'removeFromCart'])->name('remove.cart');
-Route::get('category/{id}', [PagesController::class, 'category']);
+Route::get('single_category/{id}', [PagesController::class, 'singleCategory']);
 Route::post('create-seller',[RegisterSellerController::class,'createSeller'])->name('create-seller');
 Route::get('register-seller',[PagesController::class,'registerSeller']);
 Route::get('checkout',[PagesController::class,'checkout']);
+
+Route::get('cart', [App\Http\Controllers\CartController::class, 'cart']);
+Route::get('add-to-cart/{id}', [App\Http\Controllers\CartController::class, 'addToCart']);
+Route::patch('update-cart', [App\Http\Controllers\CartController::class, 'update']);
+Route::delete('remove-from-cart', [App\Http\Controllers\CartController::class, 'remove'])->name('remove.cart');
+
 
 Auth::routes();
 

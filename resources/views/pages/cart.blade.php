@@ -98,7 +98,9 @@
                                   I agree with the terms and conditions
 								</label>
                               </p>
-                              <input type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Proceed To Checkout" disabled="disabled">
+                              <form>
+                              <input formaction="{{url('checkout')}}" type="submit" name="checkout" id="cartCheckout" class="btn btn--small-wide checkout" value="Proceed To Checkout">
+                              </form>
                               <div class="paymnet-img"><img src="assets/images/payment-img.jpg" alt="Payment"></div>
                               <p><a href="#;">Checkout with Multiple Addresses</a></p>
                             </div>

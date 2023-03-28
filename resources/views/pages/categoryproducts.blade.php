@@ -1,188 +1,167 @@
 @extends('layouts.branch')
 
-@section('title', 'Products')
+@section('title', $categoryId->name)
 
 @section('content')
-		<!-- Product Style -->
-		<section class="product-area shop-sidebar shop section">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-md-4 col-12">
-						<div class="shop-sidebar">
-								<!-- Single Widget -->
-								<div class="single-widget category">
-									<h3 class="title">Categories</h3>
-									<ul class="categor-list">
-                                        @foreach ($categories as $category)
-										<li><a href="#">{{$category->name}}</a></li>                                            
-                                        @endforeach
-									</ul>
-								</div>
-								<!--/ End Single Widget -->
-								<!-- Shop By Price -->
-									<div class="single-widget range">
-										<h3 class="title">Shop by Price</h3>
-										<div class="price-filter">
-											<div class="price-filter-inner">
-												<div id="slider-range"></div>
-													<div class="price_slider_amount">
-													<div class="label-input">
-														<span>Range:</span><input type="text" id="amount" name="price" placeholder="Add Your Price"/>
-													</div>
-												</div>
-											</div>
-										</div>
-										<ul class="check-box-list">
-											<li>
-												<label class="checkbox-inline" for="1"><input name="news" id="1" type="checkbox">$20 - $50<span class="count">(3)</span></label>
-											</li>
-											<li>
-												<label class="checkbox-inline" for="2"><input name="news" id="2" type="checkbox">$50 - $100<span class="count">(5)</span></label>
-											</li>
-											<li>
-												<label class="checkbox-inline" for="3"><input name="news" id="3" type="checkbox">$100 - $250<span class="count">(8)</span></label>
-											</li>
-										</ul>
-									</div>
-									<!--/ End Shop By Price -->
-								<!-- Single Widget -->
-								<div class="single-widget recent-post">
-									<h3 class="title">Recent post</h3>
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Girls Dress</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Women Clothings</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-									<!-- Single Post -->
-									<div class="single-post first">
-										<div class="image">
-											<img src="https://via.placeholder.com/75x75" alt="#">
-										</div>
-										<div class="content">
-											<h5><a href="#">Man Tshirt</a></h5>
-											<p class="price">$99.50</p>
-											<ul class="reviews">
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-												<li class="yellow"><i class="ti-star"></i></li>
-											</ul>
-										</div>
-									</div>
-									<!-- End Single Post -->
-								</div>
-								<!--/ End Single Widget -->
-								<!-- Single Widget -->
-								<div class="single-widget category">
-									<h3 class="title">Manufacturers</h3>
-									<ul class="categor-list">
-										<li><a href="#">Forever</a></li>
-										<li><a href="#">giordano</a></li>
-										<li><a href="#">abercrombie</a></li>
-										<li><a href="#">ecko united</a></li>
-										<li><a href="#">zara</a></li>
-									</ul>
-								</div>
-								<!--/ End Single Widget -->
-						</div>
-					</div>
-					<div class="col-lg-9 col-md-8 col-12">
-						<div class="row">
-							<div class="col-12">
-								<!-- Shop Top -->
-								<div class="shop-top">
-									<div class="shop-shorter">
-										<div class="single-shorter">
-											<label>Show :</label>
-											<select>
-												<option selected="selected">09</option>
-												<option>15</option>
-												<option>25</option>
-												<option>30</option>
-											</select>
-										</div>
-										<div class="single-shorter">
-											<label>Sort By :</label>
-											<select>
-												<option selected="selected">Name</option>
-												<option>Price</option>
-												<option>Size</option>
-											</select>
-										</div>
-									</div>
-									<ul class="view-mode">
-										<li class="active"><a href="shop-grid.html"><i class="fa fa-th-large"></i></a></li>
-									</ul>
-								</div>
-								<!--/ End Shop Top -->
-							</div>
-						</div>
-						<div class="row">
-                            @foreach ($products as $product)
-							<div class="col-lg-4 col-md-6 col-12">
-								<div class="single-product">
-									<div class="product-img">
-										<a href="product-details.html">
-											<img class="default-img" src="{{Storage::url($product->image_path)}}" alt="#">
-											<img class="hover-img" src="{{Storage::url($product->image_path)}}" alt="#">
-										</a>
-										<div class="button-head">
-											<div class="product-action">
-												<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
-												<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
-												<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
-											</div>
-											<div class="product-action-2">
-												<a title="Add to cart" href="#">Add to cart</a>
-											</div>
-										</div>
-									</div>
-									<div class="product-content">
-										<h3><a href="product-details.html">{{$product->name}}</a></h3>
-										<div class="product-price">
-											<span>KSH{{$product->price}}</span>
-										</div>
-									</div>
-								</div>
-							</div>                                
-                            @endforeach
+    <!--Body Content-->
+    <div id="page-content">
+        
+        <div class="container">
+        	<div class="row">
+            	<!--Sidebar-->
+            	<div class="col-12 col-sm-12 col-md-3 col-lg-3 sidebar filterbar">
+                	<div class="closeFilter d-block d-md-none d-lg-none"><i class="icon icon anm anm-times-l"></i></div>
+                	<div class="sidebar_tags">
+                    	<!--Categories-->
+                    	<div class="sidebar_widget categories filter-widget">
+                            <div class="widget-title"><h2>Categories</h2></div>
+                            <div class="widget-content">
+                                <ul class="sidebar_categories">
+									@foreach ($categories as $category)
+									@if ($category->sex == 'M' && $category->sex == 'F')
+                                    <li class="level1 sub-level"><a href="#;" class="site-nav">{{$category->name}}</a>
+                                    	<ul class="sublinks">
+											@if ($category->sex == 'M')
+                                        	<li class="level2"><a href="#;" class="site-nav">Men</a></li>
+											@elseif ($category->sex == 'F')	
+											<li class="level2"><a href="#;" class="site-nav">Women</a></li>											
+											@endif
+                                            <li class="level2"><a href="#;" class="site-nav">View All Clothing</a></li>
+                                        </ul>
+                                    </li>	
+									@elseif ($category->sex !== 'M' && $category->sex !== 'F')	
+									<li class="lvl-1"><a href="{{url('single_category/'.$category->id)}}" class="site-nav">{{$category->name}}</a></li>																		
+									@endif
 
+									@endforeach
+                                </ul>
+                            </div>
+                        </div>
+                        <!--Categories-->
+                        <!--Popular Products-->
+						@if (count($popularproducts) >=1)
+						<div class="sidebar_widget">
+                        	<div class="widget-title"><h2>Popular Products</h2></div>
+							<div class="widget-content">
+                                <div class="list list-sidebar-products">
+                                  <div class="grid">
+									@foreach ($popularproducts as $product)
+                                    <div class="grid__item">
+                                      <div class="mini-list-item">
+                                        <div class="mini-view_image">
+                                            <a class="grid-view-item__link" href="{{url('single_product/'.$product->id)}}">
+                                                <img class="grid-view-item__image" src="{{Storage::url($product->image_path)}}" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="details"> <a class="grid-view-item__title" href="{{url('single_product/'.$product->id)}}">{{$product->name}} </a>
+                                          <div class="grid-view-item__meta"><span class="product-price__price"><span class="money">KSH{{$product->price}}</span></span></div>
+                                        </div>
+                                      </div>
+                                    </div>										
+									@endforeach
+
+                                  </div>
+                                </div>
+                          	</div>
 						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--/ End Product Style 1  -->	
+						@endif
+                        <!--End Popular Products-->
+                    </div>
+                </div>
+                <!--End Sidebar-->
+                <!--Main Content-->
+                <div class="col-12 col-sm-12 col-md-9 col-lg-9 main-col shop-grid-5">
+				@if(count($products)>=1) 
+                	<div class="productList">
+                    	<!-- <div class="category-description">
+                            <h3>Category Description</h3>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing.</p>
+                            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+                        </div> -->
+                        <hr>
+                    	<!--Toolbar-->
+                        <button type="button" class="btn btn-filter d-block d-md-none d-lg-none"> Product Filters</button>
+                    	<div class="toolbar">
+                        	<div class="filters-toolbar-wrapper">
+                            	<div class="row">
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Toolbar-->
+                        <div class="grid-products grid--view-items">
+                            <div class="row">
+								@foreach ($products as $product)
+								<div class="col-6 col-sm-6 col-md-4 col-lg-2 item">
+                                    <!-- start product image -->
+                                    <div class="product-image">
+                                        <!-- start product image -->
+                                        <a href="{{url('single_product/'.$product->id)}}">
+                                            <!-- image -->
+                                            <img class="primary blur-up lazyload" data-src="{{Storage::url($product->image_path)}}" src="{{Storage::url($product->image_path)}}" alt="image" title="product">
+                                            <!-- End image -->
+                                            <!-- Hover image -->
+                                            <img class="hover blur-up lazyload" data-src="{{Storage::url($product->image_path)}}" src="{{Storage::url($product->image_path)}}" alt="image" title="product">
+                                            <!-- End hover image -->
+                                            <!-- product label -->
+                                            <div class="product-labels rectangular"><span class="lbl on-sale">-16%</span> <span class="lbl pr-label1">new</span></div>
+                                            <!-- End product label -->
+                                        </a>
+                                        <!-- end product image -->
+										<!-- Start product button -->
+										<form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$product->id)}}'"method="post">
+											<button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
+										</form>
+										<div class="button-set">
+											<a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+												<i class="icon anm anm-search-plus-r"></i>
+											</a>
+
+										</div>
+										<!-- end product button -->
+                                    </div>
+                                    <!-- end product image -->
+    
+                                    <!--start product details -->
+                                    <div class="product-details text-center">
+                                        <!-- product name -->
+                                        <div class="product-name">
+                                            <a href="{{url('single_product/'.$product->id)}}">{{$product->name}}</a>
+                                        </div>
+                                        <!-- End product name -->
+                                        <!-- product price -->
+                                        <div class="product-price">
+                                            <!-- <span class="old-price">$500.00</span> -->
+                                            <span class="price">KSH{{$product->price}}</span>
+                                        </div>
+                                        <!-- End product price -->
+
+                                    </div>
+                                    <!-- End product details -->
+                                </div>
+								@endforeach
+                            </div>
+                        </div>
+                    </div>
+                    <div class="infinitpaginOuter">
+                        <div class="infinitpagin">	
+							{!! $products->links() !!}
+						</div>
+                    </div>
+				@else
+				<div class="col-12 col-sm-12 col-md-12 col-lg-12">	
+        			<div class="empty-page-content text-center">
+                        <h1>Oops! Products Not Found</h1>
+                        <p>The products for this category do not exist.</p>
+                        <p><a href="{{url('/')}}" class="btn btn--has-icon-after">Continue shopping <i class="fa fa-caret-right" aria-hidden="true"></i></a></p>
+                      </div>
+        		</div>
+				@endif
+                </div>
+                <!--End Main Content-->
+            </div>
+        </div>
+        
+    </div>
+    <!--End Body Content-->
+  
 @endsection        

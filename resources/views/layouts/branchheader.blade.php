@@ -68,14 +68,14 @@
 											<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Featured</a>
 												<ul class="subLinks">
 													@foreach ($featuredproducts as $product)
-													<li class="lvl-2"><a href="#" class="site-nav lvl-2">{{$product->name}}</a></li>													
+													<li class="lvl-2"><a href="{{url('single_product/'.$product->id)}}" class="site-nav lvl-2">{{$product->name}}</a></li>													
 													@endforeach
 												</ul>
 											</li>
 											<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Best Selling</a>
 												<ul class="subLinks">
 													@foreach ($bestsellingproducts as $product)
-													<li class="lvl-2"><a href="#" class="site-nav lvl-2">{{$product->name}}</a></li>													
+													<li class="lvl-2"><a href="{{url('single_product/'.$product->id)}}" class="site-nav lvl-2">{{$product->name}}</a></li>													
 													@endforeach   
 												</ul>
 											</li>
@@ -95,21 +95,21 @@
 													<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Women</a>
 														<ul class="subLinks">
 															@foreach ($womencategories as $category)
-															<li class="lvl-2"><a href="#" class="site-nav lvl-2">{{$category->name}}</a></li>															
+															<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
 															@endforeach
 														</ul>
 													</li>
 													<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Men</a>
 														<ul class="subLinks">
 															@foreach ($mencategories as $category)
-															<li class="lvl-2"><a href="#" class="site-nav lvl-2">{{$category->name}}</a></li>															
+															<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
 															@endforeach
 														</ul>
 													</li>
 													<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Sale</a>
 														<ul class="subLinks">
 															@foreach ($salecategories as $category)
-															<li class="lvl-2"><a href="#" class="site-nav lvl-2">{{$category->name}}</a></li>															
+															<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
 															@endforeach
 														</ul>
 														</li>
@@ -206,14 +206,14 @@
 					<li><a href="#" class="site-nav">Featured<i class="anm anm-plus-l"></i></a>
 					<ul>
 						@foreach ($featuredproducts as $product)
-						<li><a href="#" class="site-nav">{{$product->name}}</a></li>
+						<li><a href="{{url('single_product/'.$product->id)}}" class="site-nav">{{$product->name}}</a></li>
 						@endforeach
 					</ul>
 					</li>
 					<li><a href="#" class="site-nav">Best Selling<i class="anm anm-plus-l"></i></a>
 					<ul>
 						@foreach ($bestsellingproducts as $product)
-						<li><a href="#" class="site-nav">{{$product->name}}</a></li>
+						<li><a href="{{url('single_product/'.$product->id)}}" class="site-nav">{{$product->name}}</a></li>
 						@endforeach
 					</ul>
 					</li>
@@ -224,21 +224,21 @@
 					<li><a href="#" class="site-nav">Women<i class="anm anm-plus-l"></i></a>
 					<ul>
 						@foreach ($womencategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
+						<li><a href="{{url('single_category/'.$category->id)}}" class="site-nav">{{$category->name}}</a></li>
 						@endforeach
 					</ul>
 					</li>
 					<li><a href="#" class="site-nav">Men<i class="anm anm-plus-l"></i></a>
 					<ul>
 						@foreach ($womencategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
+						<li><a href="{{url('single_category/'.$category->id)}}" class="site-nav">{{$category->name}}</a></li>
 						@endforeach
 					</ul>
 					</li>
 					<li><a href="#" class="site-nav">Sale<i class="anm anm-plus-l"></i></a>
 					<ul>
 						@foreach ($salecategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
+						<li><a href="{{url('single_category/'.$category->id)}}" class="site-nav">{{$category->name}}</a></li>
 						@endforeach
 					</ul>
 					</li>

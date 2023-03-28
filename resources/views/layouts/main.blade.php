@@ -57,6 +57,7 @@
     <div id="page-content">
 		@yield('content')
     </div>
+
     <!--End Body Content-->
     
     <!--Footer-->

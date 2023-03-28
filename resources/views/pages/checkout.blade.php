@@ -172,42 +172,34 @@
                                         <tr>
                                             <th class="text-left">Product Name</th>
                                             <th>Price</th>
-                                            <th>Size</th>
                                             <th>Qty</th>
                                             <th>Subtotal</th>
                                         </tr>
                                     </thead>
+                                        <?php $total = 0 ?>
+                                        @foreach((array) session('cart') as $id => $details)
+                                            <?php $total += $details['price'] * $details['quantity'] ?>
+                                        @endforeach
                                     <tbody>
+                                        @if (session('cart'))
+                                        @foreach(session('cart') as $id => $details)
                                         <tr>
-                                            <td class="text-left">Spike Jacket</td>
-                                            <td>$99</td>
-                                            <td>S</td>
-                                            <td>1</td>
-                                            <td>$99</td>
+                                            <td class="text-left">{{$details['name']}} </td>
+                                            <td>KSH{{$details['price']}}</td>
+                                            <td>{{$details['quantity']}}</td>
+                                            <td>KSH{{ $details['price'] * $details['quantity'] }}</td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-left">Argon Sweater</td>
-                                            <td>$199</td>
-                                            <td>M</td>
-                                            <td>2</td>
-                                            <td>$298</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-left">Babydoll Bow Dress</td>
-                                            <td>$299</td>
-                                            <td>XL</td>
-                                            <td>3</td>
-                                            <td>$398</td>
-                                        </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                     <tfoot class="font-weight-600">
                                         <tr>
                                             <td colspan="4" class="text-right">Shipping </td>
-                                            <td>$50.00</td>
+                                            <td>Free</td>
                                         </tr>
                                         <tr>
                                             <td colspan="4" class="text-right">Total</td>
-                                            <td>$845.00</td>
+                                            <td>KSH{{$total}}</td>
                                         </tr>
                                     </tfoot>
                                 </table>
@@ -217,86 +209,21 @@
                         <hr />
 
                         <div class="your-payment">
+                            <form>
                             <h2 class="payment-title mb-3">payment method</h2>
                             <div class="payment-method">
                                 <div class="payment-accordion">
                                     <div id="accordion" class="payment-section">
-                                        <div class="card mb-2">
-                                            <div class="card-header">
-                                                <a class="card-link" data-toggle="collapse" href="#collapseOne">Direct Bank Transfer </a>
-                                            </div>
-                                            <div id="collapseOne" class="collapse" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <p class="no-margin font-15">Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won't be shipped until the funds have cleared in our account.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-2">
-                                            <div class="card-header">
-                                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">Cheque Payment</a>
-                                            </div>
-                                            <div id="collapseTwo" class="collapse" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <p class="no-margin font-15">Please send your cheque to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card margin-15px-bottom border-radius-none">
-                                            <div class="card-header">
-                                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseThree"> PayPal </a>
-                                            </div>
-                                            <div id="collapseThree" class="collapse" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <p class="no-margin font-15">Pay via PayPal; you can pay with your credit card if you don't have a PayPal account.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-2">
-                                            <div class="card-header">
-                                                <a class="collapsed card-link" data-toggle="collapse" href="#collapseFour"> Payment Information </a>
-                                            </div>
-                                            <div id="collapseFour" class="collapse" data-parent="#accordion">
-                                                <div class="card-body">
-                                                    <fieldset>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <label for="input-cardname">Name on Card <span class="required-f">*</span></label>
-                                                                <input name="cardname" value="" placeholder="Card Name" id="input-cardname" class="form-control" type="text">
-                                                            </div>
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <label for="input-country">Credit Card Type <span class="required-f">*</span></label>
-                                                                <select name="country_id" class="form-control">
-                                                                    <option value=""> --- Please Select --- </option>
-                                                                    <option value="1">American Express</option>
-                                                                    <option value="2">Visa Card</option>
-                                                                    <option value="3">Master Card</option>
-                                                                    <option value="4">Discover Card</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <label for="input-cardno">Credit Card Number  <span class="required-f">*</span></label>
-                                                                <input name="cardno" value="" placeholder="Credit Card Number" id="input-cardno" class="form-control" type="text">
-                                                            </div>
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <label for="input-cvv">CVV Code <span class="required-f">*</span></label>
-                                                                <input name="cvv" value="" placeholder="Card Verification Number" id="input-cvv" class="form-control" type="text">
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <label>Expiration Date <span class="required-f">*</span></label>
-                                                                <input type="date" name="exdate" class="form-control">
-                                                            </div>
-                                                            <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                                                <img class="padding-25px-top xs-padding-5px-top" src="assets/images/payment-img.jpg" alt="card" title="card" />
-                                                            </div>
-                                                        </div>
-                                                    </fieldset>
 
-                                                </div>
-                                            </div>
+                                        <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
+                                            <label for="input-country">Payment <span class="required-f">*</span></label>
+                                            <select name="country_id" id="input-country">
+                                                <option value=""> Please Select</option>
+                                                <option value="paypal">PayPal</option>
+                                                <option value="card">Credit/Debit Card</option>
+                                                <option value="mpesa">MPESA</option>
+                                                <option value="cash">Cash on Delivery</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
@@ -305,6 +232,7 @@
                                     <button class="btn" value="Place order" type="submit">Place order</button>
                                 </div>
                             </div>
+                            </form>
                         </div>
                     </div>
                 </div>

@@ -14,6 +14,21 @@ class CategoryTableSeeder extends Seeder
     public function run(): void
     {
         Category::create([
+            'name' => 'Clothing',
+            'sex' => 'M'
+        ]);
+
+        Category::create([
+            'name' => 'Clothing',
+            'sex' => 'F'
+        ]);
+
+        Category::create([
+            'name' => 'Clothing',
+            'sex' => 'Kids'
+        ]);
+
+        Category::create([
             'name' => 'Travel Bags',
             'sex' => 'M'
         ]);
