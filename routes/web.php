@@ -30,6 +30,7 @@ Route::get('add-to-cart/{id}', [App\Http\Controllers\CartController::class, 'add
 Route::patch('update-cart', [App\Http\Controllers\CartController::class, 'update']);
 Route::delete('remove-from-cart', [App\Http\Controllers\CartController::class, 'remove'])->name('remove.cart');
 
+Route::post('order',[App\Http\Controllers\CheckoutController::class,'storeOrder'])->name('order');
 
 Auth::routes();
 

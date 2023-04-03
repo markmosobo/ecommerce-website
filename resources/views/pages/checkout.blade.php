@@ -5,6 +5,7 @@
 @section('content')
 
 <div class="container">
+        <form method="post" action="{{url('order')}}">
         	<div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                     <div class="customer-box returning-customer">
@@ -12,7 +13,6 @@
                         <div id="customer-login" class="collapse customer-content">
                             <div class="customer-info">
                                 <p class="coupon-text">If you have shopped with us before, please enter your details in the boxes below. If you are a new customer, please proceed to the Billing &amp; Shipping section.</p>
-                                <form>
                                     <div class="row">
                                         <div class="form-group col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                             <label for="exampleInputEmail1">Email address <span class="required-f">*</span></label>
@@ -34,13 +34,12 @@
                                             <button type="submit" class="btn btn-primary mt-3">Submit</button>
                                         </div>
                                     </div>
-                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
+                <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                     <div class="customer-box customer-coupon">
                         <h3 class="font-15 xs-font-13"><i class="icon anm anm-gift-l"></i> Have a coupon? <a href="#have-coupon" class="text-white text-decoration-underline" data-toggle="collapse">Click here to enter your code</a></h3>
                         <div id="have-coupon" class="collapse coupon-checkout-content">
@@ -54,13 +53,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
 
             <div class="row billing-fields">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
                     <div class="create-ac-content bg-light-gray padding-20px-all">
-                        <form>
                             <fieldset>
                                 <h2 class="login-title mb-3">Billing details</h2>
                                 <div class="row">
@@ -157,7 +155,6 @@
                                     </div>
                                 </div>
                             </fieldset>
-                        </form>
                     </div>
                 </div>
 
@@ -209,16 +206,15 @@
                         <hr />
 
                         <div class="your-payment">
-                            <form>
                             <h2 class="payment-title mb-3">payment method</h2>
                             <div class="payment-method">
                                 <div class="payment-accordion">
                                     <div id="accordion" class="payment-section">
 
                                         <div class="form-group col-md-12 col-lg-12 col-xl-12 required">
-                                            <label for="input-country">Payment <span class="required-f">*</span></label>
-                                            <select name="country_id" id="input-country">
-                                                <option value=""> Please Select</option>
+                                            <label for="payment">Payment <span class="required-f">*</span></label>
+                                            <select name="payment_name" id="payment_name">
+                                                <option value="" disabled selected> Choose option</option>
                                                 <option value="paypal">PayPal</option>
                                                 <option value="card">Credit/Debit Card</option>
                                                 <option value="mpesa">MPESA</option>
@@ -229,14 +225,14 @@
                                 </div>
 
                                 <div class="order-button-payment">
-                                    <button class="btn" value="Place order" type="submit">Place order</button>
+                                    <button class="btn" value="Place order" name="submit" type="submit">Place order</button>
                                 </div>
                             </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
 </div>
 
 @endsection
