@@ -9,11 +9,11 @@
         	<div class="home-slideshow">
             	<div class="slide">
                 	<div class="blur-up lazyload bg-size">
-                        <img class="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/mobile.jpg" src="assets/images/slideshow-banners/mobile.jpg" alt="Shop Our New Collection" title="Shop Our New Collection" />
+                        <img class="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/grocery1.jpg" src="assets/images/slideshow-banners/grocery1.jpg" alt="Shop Our New Collection" title="Shop Our New Collection" />
                         <div class="slideshow__text-wrap slideshow__overlay classic bottom">
                             <div class="slideshow__text-content bottom">
                                 <div class="wrap-caption center">
-                                        <h2 class="h1 mega-title slideshow__title">Shop Our New Collection</h2>
+                                        <h2 class="h1 mega-title slideshow__title">Shop At Our New Grocery</h2>
 										<span class="mega-subtitle slideshow__subtitle">Save up to 50% off this weekend only</span>
                                         <span class="btn">Shop now</span>
                                     </div>
@@ -23,12 +23,12 @@
                 </div>
                 <div class="slide">
                 	<div class="blur-up lazyload bg-size">
-                        <img class="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/imac.png" src="assets/images/slideshow-banners/imac.png" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
+                        <img class="blur-up lazyload bg-img" data-src="assets/images/slideshow-banners/grocery2.jpg" src="assets/images/slideshow-banners/grocery2.jpg" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
                         <div class="slideshow__text-wrap slideshow__overlay classic bottom">
                             <div class="slideshow__text-content bottom">
                                 <div class="wrap-caption center">
-                                    <h2 class="h1 mega-title slideshow__title">Electronics Collection</h2>
-									<span class="mega-subtitle slideshow__subtitle">From High to low, classic or modern. We have you covered</span>
+                                    <h2 class="h1 mega-title slideshow__title">Fresh Produce Collection</h2>
+									<span class="mega-subtitle slideshow__subtitle">From Tomatoes to Bananas, carrots or apples. We have you covered</span>
                                     <span class="btn">Shop now</span>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
 				<div class="collection-grid">
 					@foreach ($allcategories as $category)
 						<div class="collection-grid-item">
-                            <a href="collection-page.html" class="collection-grid-item__link">
+                            <a href="#" class="collection-grid-item__link">
                                 <img data-src="{{Storage::url($category->image_path)}}" src="{{Storage::url($category->image_path)}}" alt="Image" class="blur-up lazyload"/>
                                 <div class="collection-grid-item__title-wrapper">
                                     <h3 class="collection-grid-item__title btn btn--secondary no-border">{{$category->name}}</h3>
