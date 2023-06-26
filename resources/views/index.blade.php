@@ -103,7 +103,7 @@
                                 <div class="product-details hoverDetails text-center mobile">
                                     <!-- product name -->
                                     <div class="product-name">
-                                        <a href="{{url('singleproduct/'.$product->id)}}" id="name" name="name">{{$product->name}}</a>
+                                        <a href="{{url('single_product/'.$product->id)}}" id="name" name="name">{{$product->name}}</a>
                                     </div>
                                     <!-- End product name -->
                                     <!-- product price -->
@@ -115,9 +115,9 @@
                                     
                                     <!-- product button -->
                                     <div class="button-set">
-                                        <a href="javascript:void(0)" title="Quick View" id="popup" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                                        <!-- <a href="javascript:void(0)" title="Quick View" id="popup" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
                                             <i class="icon anm anm-search-plus-r"></i>
-                                        </a>
+                                        </a> -->
                                         <!-- Start product button -->
                                         <form class="variants add" action="#" onclick="window.location.href='{{url('add-to-cart/'.$product->id)}}' "method="post">
                                             <button class="btn cartIcon btn-addto-cart" type="button" tabindex="0"><i class="icon anm anm-bag-l"></i></button>
