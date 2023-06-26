@@ -14,93 +14,105 @@ class CategoryTableSeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Clothing',
-            'sex' => 'M'
+            'id' => '1',
+            'name' => 'Rice',
         ]);
 
         Category::create([
-            'name' => 'Clothing',
-            'sex' => 'F'
+            'id' => '2',
+            'name' => 'Pasta',
         ]);
 
         Category::create([
-            'name' => 'Clothing',
-            'sex' => 'Kids'
+            'id' => '3',
+            'name' => 'Flour',
         ]);
 
         Category::create([
-            'name' => 'Travel Bags',
-            'sex' => 'M'
+            'id' => '4',
+            'name' => 'Beans',
         ]);
 
         Category::create([
-            'name' => 'Hand Bags',
-            'sex' => 'F'
+            'id' => '5',
+            'name' => 'Apples',
+            
         ]);
 
         Category::create([
-            'name' => 'School Bags',
-            'sex' => 'U'
+            'id' => '6',
+            'name' => 'Bananas',
         ]);
 
         Category::create([
-            'name' => 'Shirts',
-            'sex' => 'M'
+            'id' => '7',
+            'name' => 'Carrots',
+            
         ]);
 
         Category::create([
-            'name' => 'Jeans',
-            'sex' => 'W'
+            'id' => '8',
+            'name' => 'Tomatoes',
         ]);
 
         Category::create([
-            'name' => 'Official Shoes',
-            'sex' => 'M'
+            'id' => '9',
+            'name' => 'Milk',
         ]);
 
         Category::create([
-            'name' => 'Shoes',
-            'sex' => 'F'
+            'id' => '10',
+            'name' => 'Yoghurt',
         ]);
 
         Category::create([
-            'name' => 'Phones',
-            'sex' => 'U'
+            'id' => '11',
+            'name' => 'Butter',
         ]);
 
         Category::create([
-            'name' => 'Books',
-            'sex' => 'U'
+            'id' => '12',
+            'name' => 'Eggs',
         ]);
 
         Category::create([
-            'name' => 'Sportswear',
-            'sex' => 'U'
+            'id' => '13',
+            'name' => "Chicken",
         ]);
 
         Category::create([
-            'name' => 'Household Items',
-            'sex' => 'U'
+            'id' => '14',
+            'name' => "Ground Beef",
         ]);
 
         Category::create([
-            'name' => "Cosmetics",
-            'sex' => 'F'
+            'id' => '15',
+            'name' => "Salmon",
         ]);
 
         Category::create([
-            'name' => "Accessories",
-            'sex' => 'F'
+            'id' => '16',
+            'name' => "Shrimp",
         ]);
 
         Category::create([
-            'name' => "Sweaters",
-            'sex' => 'F'
+            'id' => '17',
+            'name' => "Coffee",
         ]);
 
         Category::create([
-            'name' => "Hoodies",
-            'sex' => 'U'
+            'id' => '18',
+            'name' => "Chips",
+        ]);
+
+        Category::create([
+            'id' => '19',
+            'name' => "Soda",
+        ]);
+
+        Category::create([
+            'id' => '20',
+            'name' => "Juice",
         ]);
     }
 }

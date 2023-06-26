@@ -15,9 +15,6 @@ class CartController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::orderByDesc('created_at')->take(5)->get();
@@ -26,7 +23,7 @@ class CartController extends Controller
         $trendingproducts = Product::all();
         $contacts = Contact::all();
         return view('pages.cart', compact('featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'topcategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts')); 
     }

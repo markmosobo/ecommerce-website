@@ -146,5 +146,124 @@ class ProductController extends Controller
         return Response()->json($product);
     }
 
+    public function pantryStaple()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Product::where('category_id',1)
+            ->orWhere('category_id',2)
+            ->orWhere('category_id',3)
+            ->orWhere('category_id',4))
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.pantrystaple', compact('categories'));
+    }
+
+    public function freshProduce()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Product::where('category_id',5)
+            ->orWhere('category_id',6)
+            ->orWhere('category_id',7)
+            ->orWhere('category_id',8))
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.freshproduce', compact('categories'));
+    }
+
+    public function dairyEggs()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Product::where('category_id',9)
+            ->orWhere('category_id',10)
+            ->orWhere('category_id',11)
+            ->orWhere('category_id',12))
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.dairyeggs', compact('categories'));
+    }
+
+    public function meatSeafood()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Product::where('category_id',13)
+            ->orWhere('category_id',14)
+            ->orWhere('category_id',15)
+            ->orWhere('category_id',16))
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.meatseafood', compact('categories'));
+    }
+
+    public function snackBeverage()
+    {
+        if(request()->ajax()) {
+            return datatables()->of(Product::where('category_id',17)
+            ->orWhere('category_id',18)
+            ->orWhere('category_id',19)
+            ->orWhere('category_id',20))
+            ->addColumn('action', 'products.product-action')
+            ->addColumn('category', function($row){
+                return $row->category->name;
+            })
+            ->addColumn('seller', function($row){
+                $firstname = $row->seller->first_name;
+                $lastname = $row->seller->last_name;
+                return $firstname ." ". $lastname;
+            })
+            ->rawColumns(['action'])
+            ->addIndexColumn()
+            ->make(true);
+        }
+        $categories = Category::all();
+        return view('products.snacksbeverages', compact('categories'));
+    }
 
 }

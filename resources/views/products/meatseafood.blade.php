@@ -31,7 +31,7 @@
 </div>
 @endif
 <div class="card-body">
-<table class="table table-bordered" id="product-datatable">
+<table class="table table-bordered" id="meatseafood-datatable">
 <thead>
 <tr>
 <th>Id</th>
@@ -67,15 +67,10 @@
 <div class="col-sm-12">
     <select name="category_id" id="category_id" class="form-control" maxlength="50" required="">
     <option value="0">Select category</option>
-    @foreach ($categories as $category)
-    @if ($category->sex == 'M')
-    <option value="{{$category->id}}">{{$category->name}} (Men)</option>            
-    @elseif ($category->sex == 'F')  
-    <option value="{{$category->id}}">{{$category->name}} (Women)</option>            
-    @else
-    <option value="{{$category->id}}">{{$category->name}}</option>                
-    @endif
-    @endforeach
+    <option value="13">Chicken</option>                
+    <option value="14">Ground Beef</option>                
+    <option value="15">Salmon</option>                
+    <option value="16">Shrimp</option>                
     </select>
 </div>
 </div> 
@@ -143,10 +138,10 @@ $('#images').on('change', function() {
 ShowMultipleImagePreview(this, 'div.show-multiple-image-preview');
 });
 });
-$('#product-datatable').DataTable({
+$('#meatseafood-datatable').DataTable({
 processing: true,
 serverSide: true,
-ajax: "{{ url('product-datatable') }}",
+ajax: "{{ url('meatseafood-datatable') }}",
 columns: [
 { data: 'id', name: 'id' },
 { data: 'name', name: 'name' },
@@ -191,7 +186,7 @@ url: "{{ url('delete-product') }}",
 data: { id: id },
 dataType: 'json',
 success: function(res){
-var oTable = $('#product-datatable').dataTable();
+var oTable = $('#meatseafood-datatable').dataTable();
 oTable.fnDraw(false);
 }
 });
@@ -215,7 +210,7 @@ contentType: false,
 processData: false,
 success: (data) => {
 $("#product-modal").modal('hide');
-var oTable = $('#product-datatable').dataTable();
+var oTable = $('#meatseafood-datatable').dataTable();
 oTable.fnDraw(false);
 $("#btn-save").html('Submit');
 $("#btn-save"). attr("disabled", false);

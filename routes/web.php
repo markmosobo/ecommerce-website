@@ -51,6 +51,17 @@ Route::post('store-product', [App\Http\Controllers\ProductController::class, 'st
 Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
 Route::delete('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
 
+Route::get('pantrystaple-datatable', [App\Http\Controllers\ProductController::class, 'pantryStaple']);
+Route::post('store-product', [App\Http\Controllers\ProductController::class, 'store']);
+Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
+Route::delete('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
+
+Route::get('freshproduce-datatable', [App\Http\Controllers\ProductController::class, 'freshProduce']);
+Route::get('dairyeggs-datatable', [App\Http\Controllers\ProductController::class, 'dairyEggs']);
+Route::get('meatseafood-datatable', [App\Http\Controllers\ProductController::class, 'meatSeafood']);
+Route::get('snackbeverages-datatable', [App\Http\Controllers\ProductController::class, 'snackBeverage']);
+
+
 Route::get('sellerproduct-datatable', [App\Http\Controllers\SellerProductController::class, 'index']);
 
 Route::get('category-datatable', [App\Http\Controllers\CategoryController::class, 'index']);

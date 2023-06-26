@@ -62,79 +62,51 @@
                 	<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
                         <ul id="siteNav" class="site-nav medium center hidearrow">
                       	    <li class="lvl1"><a href="/"><b>Home</b> <i class="anm anm-angle-down-l"></i></a></li>
-                            <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
-                            	<div class="megamenu style4">
-                                    <ul class="grid grid--uniform mmWrapper">
-                                    	<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Featured</a>
-                                            <ul class="subLinks">
-												@foreach ($featuredproducts as $product)
-                                                <li class="lvl-2"><a href="{{url('single_product/'.$product->id)}}" class="site-nav lvl-2">{{$product->name}}</a></li>													
-												@endforeach
-                                            </ul>
-                                      	</li>
-                                      	<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Best Selling</a>
-                                            <ul class="subLinks">
-												@foreach ($bestsellingproducts as $product)
-                                                <li class="lvl-2"><a href="{{url('single_product/'.$product->id)}}" class="site-nav lvl-2">{{$product->name}}</a></li>													
-												@endforeach   
-											</ul>
-                                      	</li>
-                                        <li class="grid__item lvl-1 col-md-6 col-lg-6">
-											@foreach($featureimage as $image)
-                                        	<a href="{{url('single_product/'.$image->id)}}"><img src="{{Storage::url($image->image_path)}}" style="width:750px;height:auto;" alt="" title="" /></a>
-											@endforeach
-                                        </li>
-                                    </ul>
-                              	</div>
-                            </li>
 							<li class="lvl1 parent megamenu"><a href="#">Products <i class="anm anm-angle-down-l"></i></a>
 								<div class="megamenu style2">
 									<ul class="grid mmWrapper">
 										<li class="grid__item one-whole">
 											<ul class="grid">
-												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Women</a>
+												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Pantry Staple</a>
 													<ul class="subLinks">
-														@foreach ($womencategories as $category)
-														<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
-														@endforeach
+														<li class="lvl-2"><a href="{{url('single_category/1')}}" class="site-nav lvl-2">Rice</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/2')}}" class="site-nav lvl-2">Pasta</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/3')}}" class="site-nav lvl-2">Flour</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/4')}}" class="site-nav lvl-2">Beans</a></li>															
 													</ul>
 												</li>
-												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Men</a>
+												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Fresh Produce</a>
 													<ul class="subLinks">
-														@foreach ($mencategories as $category)
-														<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
-														@endforeach
+														<li class="lvl-2"><a href="{{url('single_category/5')}}" class="site-nav lvl-2">Apples</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/6')}}" class="site-nav lvl-2">Bananas</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/7')}}" class="site-nav lvl-2">Carrots</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/8')}}" class="site-nav lvl-2">Tomatoes</a></li>															
 													</ul>
 												</li>
-												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Sale</a>
+												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Dairy & Eggs</a>
 													<ul class="subLinks">
-														@foreach ($salecategories as $category)
-														<li class="lvl-2"><a href="{{url('single_category/'.$category->id)}}" class="site-nav lvl-2">{{$category->name}}</a></li>															
-														@endforeach
+														<li class="lvl-2"><a href="{{url('single_category/9')}}" class="site-nav lvl-2">Milk</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/10')}}" class="site-nav lvl-2">Yoghurt</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/11')}}" class="site-nav lvl-2">Butter</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/12')}}" class="site-nav lvl-2">Eggs</a></li>															
 													</ul>
-													</li>
+												</li>
+												<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Meat & Seafood</a>
+													<ul class="subLinks">
+														<li class="lvl-2"><a href="{{url('single_category/13')}}" class="site-nav lvl-2">Chicken</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/14')}}" class="site-nav lvl-2">Ground Beef</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/15')}}" class="site-nav lvl-2">Salmon</a></li>															
+														<li class="lvl-2"><a href="{{url('single_category/16')}}" class="site-nav lvl-2">Shrimp</a></li>															
+													</ul>
+												</li>
 											</ul>
 										</li>
 										<li class="grid__item large-up--one-whole imageCol"><a href="#"><img src="assets/images/megamenu-bg2.jpg" alt=""></a></li>
 									</ul>
 								</div>
 							</li>
-							<li class="lvl1 parent dropdown"><a href="#">Services <i class="anm anm-angle-down-l"></i></a>
-							<ul class="dropdown">
-								<li><a href="#" class="site-nav">Hair Styling</a></li>
-								<li><a href="#" class="site-nav">Transport  </a></li>
-								<li><a href="#" class="site-nav">Chores</a></li>
-								<li><a href="#" class="site-nav">Repairwork</a></li>
-								<li><a href="#" class="site-nav">Other</a>
-							</ul>
-							</li>
-							<li class="lvl1"><a href=""><b>Near Me</b> <i class="anm anm-angle-down-l"></i></a></li>
-							<li class="lvl1 parent dropdown"><a href="#">About <i class="anm anm-angle-down-l"></i></a>
-							<ul class="dropdown">
-								<li><a href="{{url('about')}}" class="site-nav">About Us</a></li>
-								<li><a href="{{url('contact')}}" class="site-nav">Contact Us  </a></li>
-							</ul>
-							</li>
+							<li class="lvl1"><a href="{{url('about')}}"><b>About Us</b> <i class="anm anm-angle-down-l"></i></a></li>
+							<li class="lvl1"><a href="{{url('contact')}}"><b>Contact Us</b> <i class="anm anm-angle-down-l"></i></a></li>
                       </ul>
                     </nav>
                     <!--End Desktop Menu-->
@@ -215,65 +187,47 @@
 		<div class="closemobileMenu"><i class="icon anm anm-times-l pull-right"></i> Close Menu</div>
         <ul id="MobileNav" class="mobile-nav">
         	<li class="lvl1 parent megamenu"><a href="/">Home <i class="anm anm-plus-l"></i></a></li>
-        	<li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-plus-l"></i></a>
-				<ul>
-					<li><a href="#" class="site-nav">Featured<i class="anm anm-plus-l"></i></a>
-					<ul>
-						@foreach ($featuredproducts as $product)
-						<li><a href="#" class="site-nav">{{$product->name}}</a></li>
-						@endforeach
-					</ul>
-					</li>
-					<li><a href="#" class="site-nav">Best Selling<i class="anm anm-plus-l"></i></a>
-					<ul>
-						@foreach ($bestsellingproducts as $product)
-						<li><a href="#" class="site-nav">{{$product->name}} </a></li>
-						@endforeach
-					</ul>
-					</li>
-				</ul>
-			</li>
         	<li class="lvl1 parent megamenu"><a href="#">Products <i class="anm anm-plus-l"></i></a>
 				<ul>
-					<li><a href="#" class="site-nav">Women<i class="anm anm-plus-l"></i></a>
+					<li><a href="#" class="site-nav">Pantry Staple<i class="anm anm-plus-l"></i></a>
 					<ul>
-						@foreach ($womencategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
-						@endforeach
+						<li><a href="{{url('single_category/1')}}" class="site-nav">Rice</a></li>
+						<li><a href="{{url('single_category/2')}}" class="site-nav">Pasta</a></li>
+						<li><a href="{{url('single_category/3')}}" class="site-nav">Flour</a></li>
+						<li><a href="{{url('single_category/4')}}" class="site-nav">Beans</a></li>
 					</ul>
 					</li>
-					<li><a href="#" class="site-nav">Men<i class="anm anm-plus-l"></i></a>
+					<li><a href="#" class="site-nav">Fresh & Produce<i class="anm anm-plus-l"></i></a>
 					<ul>
-						@foreach ($womencategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
-						@endforeach
+						<li><a href="{{url('single_category/5')}}" class="site-nav">Apples</a></li>
+						<li><a href="{{url('single_category/6')}}" class="site-nav">Bananas</a></li>
+						<li><a href="{{url('single_category/7')}}" class="site-nav">Carrots</a></li>
+						<li><a href="{{url('single_category/8')}}" class="site-nav">Tomatoes</a></li>
+
 					</ul>
 					</li>
-					<li><a href="#" class="site-nav">Sale<i class="anm anm-plus-l"></i></a>
+					<li><a href="#" class="site-nav">Dairy & Eggs<i class="anm anm-plus-l"></i></a>
 					<ul>
-						@foreach ($salecategories as $category)
-						<li><a href="#" class="site-nav">{{$category->name}}</a></li>
-						@endforeach
+						<li><a href="{{url('single_category/9')}}" class="site-nav">Milk</a></li>
+						<li><a href="{{url('single_category/10')}}" class="site-nav">Yoghurt</a></li>
+						<li><a href="{{url('single_category/11')}}" class="site-nav">Butter</a></li>
+						<li><a href="{{url('single_category/12')}}" class="site-nav">Eggs</a></li>
+
+					</ul>
+					</li>
+					<li><a href="#" class="site-nav">Meat & Seafood<i class="anm anm-plus-l"></i></a>
+					<ul>
+						<li><a href="{{url('single_category/13')}}" class="site-nav">Chicken</a></li>
+						<li><a href="{{url('single_category/14')}}" class="site-nav">Ground Beef</a></li>
+						<li><a href="{{url('single_category/15')}}" class="site-nav">Salmon</a></li>
+						<li><a href="{{url('single_category/16')}}" class="site-nav">Shrimp</a></li>
+
 					</ul>
 					</li>
 				</ul>
 			</li>
-			<li class="lvl1 parent megamenu"><a href="#">Services <i class="anm anm-plus-l"></i></a>
-				<ul>
-					<li><a href="#" class="site-nav">Hair Styling</a>
-					<li><a href="#" class="site-nav">Transport</a>
-					<li><a href="#" class="site-nav">Chores</a>
-					<li><a href="#" class="site-nav">Repairwork</a>
-					<li><a href="#" class="site-nav">Other</a>
-				</ul>
-			</li>
-			<li class="lvl1"><a href="#"><b>Near Me</b></a>
-        	<li class="lvl1 parent megamenu"><a href="#">About Us <i class="anm anm-plus-l"></i></a>
-				<ul>
-					<li><a href="{{url('about')}}" class="site-nav">About Us</a>
-					<li><a href="{{url('contact')}}" class="site-nav">Contact Us</a>
-				</ul>
-	        </li>
+			<li class="lvl1"><a href="{{url('about')}}"><b>About Us</b></a>
+			<li class="lvl1"><a href="{{url('contact')}}"><b>Contact Us</b></a>
         </li>
       </ul>
 	</div>

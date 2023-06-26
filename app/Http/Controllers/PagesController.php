@@ -18,10 +18,11 @@ class PagesController extends Controller
         $featuredproducts = Product::inRandomOrder()->limit(8)->get();
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
-        $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
+        $allcategories = Category::all();
+        $meatseafoodcategories = Category::where('name', 'Meat & Seafood')->take(8)->get();
+        $pantrystaplecategories = Category::where('name', 'Pantry Staple')->take(8)->get();
+        $freshproducecategories = Category::where('name', 'Fresh Produce')->take(8)->get();
+        $dairyeggscategories = Category::where('name', 'Dairy & Eggs')->take(8)->get();
         $mennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
@@ -31,7 +32,7 @@ class PagesController extends Controller
         $products = Product::all();
         $contacts = Contact::all();
         return view('index', compact('categories', 'featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'allcategories','meatseafoodcategories','pantrystaplecategories','freshproducecategories','dairyeggscategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts','products'));
     }
@@ -48,20 +49,12 @@ class PagesController extends Controller
         $featuredproducts = Product::inRandomOrder()->limit(8)->get();
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
-        $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
-        $mennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
-        $womennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $menproducts = Product::all();
         $womenproducts = Product::all();
         $trendingproducts = Product::all();
         $contacts = Contact::all();
         return view('pages.contact', compact('featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
-        'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts'));
     }
 
@@ -71,9 +64,6 @@ class PagesController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::orderByDesc('created_at')->take(5)->get();
@@ -83,7 +73,7 @@ class PagesController extends Controller
         $contacts = Contact::all();
         $abouts = About::all();
         return view('pages.about', compact('featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'topcategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','abouts','contacts'));
     }
@@ -94,9 +84,6 @@ class PagesController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::orderByDesc('created_at')->take(5)->get();
@@ -105,7 +92,7 @@ class PagesController extends Controller
         $trendingproducts = Product::all();
         $contacts = Contact::all();
         return view('pages.faq', compact('featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'topcategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts'));
     }
@@ -117,9 +104,6 @@ class PagesController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex','=', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::orderByDesc('created_at')->take(5)->get();
@@ -134,9 +118,6 @@ class PagesController extends Controller
             'bestsellingproducts' => $bestsellingproducts,
             'featureimage' => $featureimage,
             'topcategories' => $topcategories,
-            'womencategories' => $womencategories,
-            'mencategories' => $mencategories,
-            'salecategories' => $salecategories,
             'menproducts' => $menproducts,
             'womenproducts' => $womenproducts,
             'trendingproducts' => $trendingproducts,
@@ -159,9 +140,6 @@ class PagesController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
@@ -170,7 +148,7 @@ class PagesController extends Controller
         $trendingproducts = Product::all();
         $contacts = Contact::all();
         return view('pages.categoryproducts', compact('products', 'categories','featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'topcategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts','categoryId','popularproducts'));
     }
@@ -188,9 +166,6 @@ class PagesController extends Controller
         $bestsellingproducts = Product::orderByDesc('sold')->limit(10)->get();
         $featureimage = Product::inRandomOrder()->limit(1)->get();
         $topcategories = Category::inRandomOrder()->take(8)->get();
-        $womencategories = Category::where('sex', 'F')->take(8)->get();
-        $mencategories = Category::where('sex', 'M')->take(8)->get();
-        $salecategories = Category::where('sex', 'U')->take(8)->get();
         $mennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $womennewarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
         $newarrivals = Product::with('category')->orderByDesc('created_at')->take(5)->get();
@@ -199,7 +174,7 @@ class PagesController extends Controller
         $trendingproducts = Product::all();
         $contacts = Contact::all();
         return view('pages.checkout', compact('categories', 'featuredproducts','bestsellingproducts','featureimage',
-        'topcategories','womencategories','mencategories','salecategories',
+        'topcategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
         'newarrivals','contacts'));  
     }

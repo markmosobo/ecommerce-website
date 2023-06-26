@@ -15,7 +15,12 @@
         <ul class="nav child_menu">
             @can('isAdmin')
             <li><a href="{{url('category-datatable')}}">Categories</a></li>  
-            <li><a href="{{url('product-datatable')}}">Products</a></li>              
+            <li><a href="{{url('product-datatable')}}">All Products</a></li>              
+            <li><a href="{{url('pantrystaple-datatable')}}">Pantry Staple</a></li>              
+            <li><a href="{{url('freshproduce-datatable')}}">Fresh Produce</a></li>              
+            <li><a href="{{url('dairyeggs-datatable')}}">Dairy & Eggs</a></li>              
+            <li><a href="{{url('meatseafood-datatable')}}">Meat & Seafood</a></li>              
+            <li><a href="{{url('snackbeverages-datatable')}}">Snacks & Beverages</a></li>              
             @endcan
             @can('isSeller')
             <li><a href="{{url('sellerproduct-datatable')}}">My Products</a></li>                
