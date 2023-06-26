@@ -224,6 +224,15 @@
 
 					</ul>
 					</li>
+					<li><a href="#" class="site-nav">Snacks & Beverages<i class="anm anm-plus-l"></i></a>
+					<ul>
+						<li><a href="{{url('single_category/17')}}" class="site-nav">Coffee</a></li>
+						<li><a href="{{url('single_category/18')}}" class="site-nav">Chips</a></li>
+						<li><a href="{{url('single_category/19')}}" class="site-nav">Soda</a></li>
+						<li><a href="{{url('single_category/20')}}" class="site-nav">Juice</a></li>
+
+					</ul>
+					</li>
 				</ul>
 			</li>
 			<li class="lvl1"><a href="{{url('about')}}"><b>About Us</b></a>

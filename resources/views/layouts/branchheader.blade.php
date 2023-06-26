@@ -2,7 +2,7 @@
 		<div class="container-fluid">
             <div class="row">
             	<div class="col-10 col-sm-8 col-md-5 col-lg-4">
-                    <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p>
+                    <!-- <p class="phone-no"><i class="anm anm-phone-s"></i> +440 0(111) 044 833</p> -->
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4 d-none d-lg-none d-md-block d-lg-block">
                 	<div class="text-center"><p class="top-header_middle-text"> {{config('app.name')}} Shopping</p></div>
@@ -193,7 +193,7 @@
 									</div>
 									<div class="buttonSet text-center">
                                   	    <a href="{{url('cart')}}" class="btn btn-secondary btn--small">View Cart</a>
-										<a href="checkout.html" class="btn btn-secondary btn--small">Checkout</a>
+										<a href="{{url('checkout')}}" class="btn btn-secondary btn--small">Checkout</a>
 									</div>
 								</div>
 							</div>
