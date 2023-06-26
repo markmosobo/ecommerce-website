@@ -35,6 +35,10 @@
             <li><a href="{{url('pendingorder-datatable')}}">Pending Orders</a></li>
             <li><a href="{{url('pastorder-datatable')}}">Past Orders</a></li>                
             @endcan
+            @can('isSeller')
+            <li><a href="{{url('unprocessedorder-datatable')}}">Unprocessed Orders</a></li>
+            <li><a href="{{url('processedorder-datatable')}}">Processed Orders</a></li>                
+            @endcan
         </ul>
         </li>
         @can('isAdmin')

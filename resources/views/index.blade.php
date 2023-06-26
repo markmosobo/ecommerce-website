@@ -58,15 +58,15 @@
                         </div>
                         <div class="tabs-listing">
                             <ul class="tabs clearfix">
-                                <li class="active" rel="tab1">Women</li>
-                                <li rel="tab2">Men</li>
-                                <li rel="tab3">Sale</li>
+                                <li class="active" rel="tab1">Latest Products</li>
+                                <!-- <li rel="tab2">Men</li>
+                                <li rel="tab3">Latest Products</li> -->
                             </ul>
                             <div class="tab_container">
                                 <div id="tab1" class="tab_content grid-products">
                                     <div class="productSlider">
-										@foreach ($womennewarrivals as $womenarrival)
-										@if($womenarrival->category->sex == 'F')
+										@foreach ($newarrivals as $womenarrival)
+										@if($womenarrival->category->sex == 'U')
 										<div class="col-12 item">
                                             <!-- start product image -->
                                             <div class="product-image">
@@ -209,8 +209,7 @@
 									</div>
                                 <div id="tab3" class="tab_content grid-products">
                                     <div class="productSlider">
-										@foreach ($newarrivals as $arrival)
-										@if($arrival->category->sex == 'U')
+										@foreach ($products as $arrival)
 										<div class="col-12 item">
                                             <!-- start product image -->
                                             <div class="product-image">
@@ -271,7 +270,6 @@
                                             </div>
                                             <!-- End product details -->
                                         </div>
-										@endif
 										@endforeach
                                     </div>
                                 </div>
@@ -308,8 +306,8 @@
             	<div class="row">
                 	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
         				<div class="section-header text-center">
-                            <h2 class="h2">Featured collection</h2>
-                            <p>Our most popular products based on sales</p>
+                            <h2 class="h2">Near Me</h2>
+                            <p>Our most popular products based on location</p>
                         </div>
             		</div>
                 </div>

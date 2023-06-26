@@ -62,7 +62,7 @@
 						<nav class="grid__item" id="AccessibleNav"><!-- for mobile -->
 							<ul id="siteNav" class="site-nav medium center hidearrow">
 								<li class="lvl1"><a href="/"><b>Home</b> <i class="anm anm-angle-down-l"></i></a></li>
-								<li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
+								<!-- <li class="lvl1 parent megamenu"><a href="#">Shop <i class="anm anm-angle-down-l"></i></a>
 									<div class="megamenu style4">
 										<ul class="grid grid--uniform mmWrapper">
 											<li class="grid__item lvl-1 col-md-3 col-lg-3"><a href="#" class="site-nav lvl-1">Featured</a>
@@ -86,8 +86,8 @@
 											</li>
 										</ul>
 									</div>
-								</li>
-								<li class="lvl1 parent megamenu"><a href="#">Product <i class="anm anm-angle-down-l"></i></a>
+								</li> -->
+								<li class="lvl1 parent megamenu"><a href="#">Products <i class="anm anm-angle-down-l"></i></a>
 									<div class="megamenu style2">
 										<ul class="grid mmWrapper">
 											<li class="grid__item one-whole">
@@ -119,18 +119,31 @@
 										</ul>
 									</div>
 								</li>
-								<li class="lvl1 parent dropdown"><a href="{{url('about')}}">About Us <i class="anm anm-angle-down-l"></i></a>
-								</li>
-							<li class="lvl1"><a href="{{url('contact')}}"><b>Contact Us</b> <i class="anm anm-angle-down-l"></i></a></li>
-						</ul>
+								<li class="lvl1 parent dropdown"><a href="#">Services <i class="anm anm-angle-down-l"></i></a>
+							<ul class="dropdown">
+								<li><a href="#" class="site-nav">Hair Styling</a></li>
+								<li><a href="#" class="site-nav">Transport  </a></li>
+								<li><a href="#" class="site-nav">Chores</a></li>
+								<li><a href="#" class="site-nav">Repairwork</a></li>
+								<li><a href="#" class="site-nav">Other</a>
+							</ul>
+							</li>
+							<li class="lvl1"><a href=""><b>Near Me</b> <i class="anm anm-angle-down-l"></i></a></li>
+							<li class="lvl1 parent dropdown"><a href="#">About <i class="anm anm-angle-down-l"></i></a>
+							<ul class="dropdown">
+								<li><a href="{{url('about')}}" class="site-nav">About Us</a></li>
+								<li><a href="{{url('contact')}}" class="site-nav">Contact Us  </a></li>
+							</ul>
+							</li>
+							</ul>
 						</nav>
 						<!--End Desktop Menu-->
 					</div>
 					<!--Mobile Logo-->
 					<div class="col-6 col-sm-6 col-md-6 col-lg-2 d-block d-lg-none mobile-logo">
 						<div class="logo">
-							<a href="index.html">
-								<img src="assets/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" />
+							<a href="{{url('/')}}">
+								<!-- <img src="assets/images/logo.svg" alt="Belle Multipurpose Html Template" title="Belle Multipurpose Html Template" /> -->
 							</a>
 						</div>
 					</div>
@@ -219,7 +232,7 @@
 					</li>
 				</ul>
 			</li>
-        	<li class="lvl1 parent megamenu"><a href="#">Product <i class="anm anm-plus-l"></i></a>
+        	<li class="lvl1 parent megamenu"><a href="#">Products <i class="anm anm-plus-l"></i></a>
 				<ul>
 					<li><a href="#" class="site-nav">Women<i class="anm anm-plus-l"></i></a>
 					<ul>
@@ -244,9 +257,22 @@
 					</li>
 				</ul>
 			</li>
-        	<li class="lvl1 parent megamenu"><a href="{{url('about')}}">About Us <i class="anm anm-plus-l"></i></a>
+        	<li class="lvl1 parent megamenu"><a href="#">Services <i class="anm anm-plus-l"></i></a>
+				<ul>
+					<li><a href="#" class="site-nav">Hair Styling</a>
+					<li><a href="#" class="site-nav">Transport</a>
+					<li><a href="#" class="site-nav">Chores</a>
+					<li><a href="#" class="site-nav">Repairwork</a>
+					<li><a href="#" class="site-nav">Other</a>
+				</ul>
+			</li>
+			<li class="lvl1"><a href="#"><b>Near Me</b></a>
+        	<li class="lvl1 parent megamenu"><a href="#">About Us <i class="anm anm-plus-l"></i></a>
+				<ul>
+					<li><a href="{{url('about')}}" class="site-nav">About Us</a>
+					<li><a href="{{url('contact')}}" class="site-nav">Contact Us</a>
+				</ul>
 	        </li>
-        	<li class="lvl1"><a href="{{url('contact')}}"><b>Contact Us</b></a>
         </li>
       </ul>
 	</div>

@@ -5,8 +5,10 @@
 @section('content')
 
 <div class="container">
-        <form method="post" action="{{url('order')}}">
+        <form method="POST" action="{{ route('store.order') }}">
+        @csrf
         	<div class="row">
+                @guest
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                     <div class="customer-box returning-customer">
                         <h3><i class="icon anm anm-user-al"></i> Returning customer? <a href="#customer-login" id="customer" class="text-white text-decoration-underline" data-toggle="collapse">Click here to login</a></h3>
@@ -38,6 +40,7 @@
                         </div>
                     </div>
                 </div>
+                @endguest
 
                 <!-- <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-3">
                     <div class="customer-box customer-coupon">
@@ -57,6 +60,7 @@
             </div>
 
             <div class="row billing-fields">
+                @guest
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 sm-margin-30px-bottom">
                     <div class="create-ac-content bg-light-gray padding-20px-all">
                             <fieldset>
@@ -64,77 +68,50 @@
                                 <div class="row">
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                         <label for="input-firstname">First Name <span class="required-f">*</span></label>
-                                        <input name="firstname" value="" id="input-firstname" type="text">
+                                        <input name="first_name" value="" id="input-firstname" type="text" required>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                         <label for="input-lastname">Last Name <span class="required-f">*</span></label>
-                                        <input name="lastname" value="" id="input-lastname" type="text">
+                                        <input name="last_name" value="" id="input-lastname" type="text" required>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                         <label for="input-email">E-Mail <span class="required-f">*</span></label>
-                                        <input name="email" value="" id="input-email" type="email">
+                                        <input name="email" value="" id="input-email" type="email" required>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                        <label for="input-telephone">Telephone <span class="required-f">*</span></label>
-                                        <input name="telephone" value="" id="input-telephone" type="tel">
+                                        <label for="input-telephone">Phone Number <span class="required-f">*</span></label>
+                                        <input name="phone_no" value="" id="input-telephone" type="tel" required>
                                     </div>
                                 </div>
                             </fieldset>
 
                             <fieldset>
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6">
-                                        <label for="input-company">Company</label>
-                                        <input name="company" value="" id="input-company" type="text">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                        <label for="input-postcode">Post Code <span class="required-f">*</span></label>
+                                        <input name="post_code" value="" id="input-postcode" type="text" required>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                         <label for="input-address-1">Address <span class="required-f">*</span></label>
-                                        <input name="address_1" value="" id="input-address-1" type="text">
+                                        <input name="address" value="" id="input-address-1" type="text" required>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6">
-                                        <label for="input-address-2">Apartment <span class="required-f">*</span></label>
-                                        <input name="address_2" value="" id="input-address-2" type="text">
+                                <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
+                                        <label for="input-country">Country <span class="required-f">*</span></label>
+                                        <select name="country" id="input-country">
+                                            <option value=""> --- Please Select --- </option>
+                                            <option value="244">Kenya</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
                                         <label for="input-city">City <span class="required-f">*</span></label>
-                                        <input name="city" value="" id="input-city" type="text">
+                                        <input name="city" value="" id="input-city" type="text" required>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                        <label for="input-postcode">Post Code <span class="required-f">*</span></label>
-                                        <input name="postcode" value="" id="input-postcode" type="text">
-                                    </div>
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                        <label for="input-country">Country <span class="required-f">*</span></label>
-                                        <select name="country_id" id="input-country">
-                                            <option value=""> --- Please Select --- </option>
-                                            <option value="244">Aaland Islands</option>
-                                            <option value="1">Afghanistan</option>
-                                            <option value="2">Albania</option>
-                                            <option value="3">Algeria</option>
-                                            <option value="4">American Samoa</option>
-                                            <option value="5">Andorra</option>
-                                            <option value="6">Angola</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group col-md-6 col-lg-6 col-xl-6 required">
-                                        <label for="input-zone">Region / State <span class="required-f">*</span></label>
-                                        <select name="zone_id" id="input-zone">
-                                            <option value=""> --- Please Select --- </option>
-                                            <option value="3513">Aberdeen</option>
-                                            <option value="3514">Aberdeenshire</option>
-                                            <option value="3515">Anglesey</option>
-                                            <option value="3516">Angus</option>
-                                        </select>
-                                    </div>
-                                </div>
+
                             </fieldset>
 
                             <fieldset>
@@ -151,12 +128,13 @@
                                 <div class="row">
                                     <div class="form-group col-md-12 col-lg-12 col-xl-12">
                                         <label for="input-company">Order Notes <span class="required-f">*</span></label>
-                                        <textarea class="form-control resize-both" rows="3"></textarea>
+                                        <textarea class="form-control resize-both" name="notes" rows="3"></textarea>
                                     </div>
                                 </div>
                             </fieldset>
                     </div>
                 </div>
+                @endguest
 
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="your-order-payment">
@@ -225,6 +203,7 @@
                                 </div>
 
                                 <div class="order-button-payment">
+                                    <input type="hidden" value="{{$total}}" name="total">
                                     <button class="btn" value="Place order" name="submit" type="submit">Place order</button>
                                 </div>
                             </div>

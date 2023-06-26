@@ -14,14 +14,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->string('order_number')->unique();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
 
             $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
             $table->decimal('grand_total', 20, 6);
             $table->unsignedInteger('item_count');
 
-            $table->boolean('payment_status')->default(1);
+            $table->string('payment_status')->nullable();
             $table->string('payment_method')->nullable();
 
             $table->string('first_name');

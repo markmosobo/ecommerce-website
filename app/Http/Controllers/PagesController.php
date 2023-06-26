@@ -28,11 +28,12 @@ class PagesController extends Controller
         $menproducts = Product::all();
         $womenproducts = Product::all();
         $trendingproducts = Product::all();
+        $products = Product::all();
         $contacts = Contact::all();
         return view('index', compact('categories', 'featuredproducts','bestsellingproducts','featureimage',
         'topcategories','womencategories','mencategories','salecategories',
         'menproducts','womenproducts','trendingproducts','mennewarrivals','womennewarrivals',
-        'newarrivals','contacts'));
+        'newarrivals','contacts','products'));
     }
 
     public function products()

@@ -30,7 +30,9 @@ Route::get('add-to-cart/{id}', [App\Http\Controllers\CartController::class, 'add
 Route::patch('update-cart', [App\Http\Controllers\CartController::class, 'update']);
 Route::delete('remove-from-cart', [App\Http\Controllers\CartController::class, 'remove'])->name('remove.cart');
 
-Route::post('order',[App\Http\Controllers\CheckoutController::class,'storeOrder'])->name('order');
+Route::post('order',[App\Http\Controllers\CheckoutController::class,'storeOrder'])->name('store.order');
+Route::get('cancel-payment', [App\Http\Controllers\PaymentController::class,'paymentCancel'])->name('cancel.payment');
+Route::get('payment-success', [App\Http\Controllers\PaymentController::class,'paymentSuccess'])->name('success.payment');
 
 Auth::routes();
 
@@ -47,7 +49,7 @@ Route::post('delete-user', [App\Http\Controllers\UserController::class, 'destroy
 Route::get('product-datatable', [App\Http\Controllers\ProductController::class, 'index']);
 Route::post('store-product', [App\Http\Controllers\ProductController::class, 'store']);
 Route::post('edit-product', [App\Http\Controllers\ProductController::class, 'edit']);
-Route::post('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
+Route::delete('delete-product', [App\Http\Controllers\ProductController::class, 'destroy']);
 
 Route::get('sellerproduct-datatable', [App\Http\Controllers\SellerProductController::class, 'index']);
 

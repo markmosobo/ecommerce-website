@@ -23,8 +23,8 @@ class UserTableSeeder extends Seeder
         ]);
 
         User::create([
-            'first_name' => 'Camilla',
-            'last_name' => 'Makira',
+            'first_name' => 'John',
+            'last_name' => 'Doe',
             'role' => 'seller',
             'email' => 'seller@gmail.com',
             'password' => Hash::make('123456')
@@ -33,7 +33,7 @@ class UserTableSeeder extends Seeder
         User::create([
             'first_name' => 'Camilla',
             'last_name' => 'Makira',
-            'role' => 'admin',
+            'role' => 'buyer',
             'email' => 'buyer@gmail.com',
             'password' => Hash::make('123456')
         ]);
